@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FMCU - Choose Model</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/show.css" rel="stylesheet">
+    <link href="css/buttons.css" rel="stylesheet">
+    <link href="css/button-self.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <div class="col-md-2 intro-title"><h1 class="brand-heading">Find Me<br>Connect Us</h1></div>
+        <div class="welcome col-md-8 text-center"><h1>Welcome to the Mofa World!</h1></div>
+    </div>
+
+    <div class="canvas" id="container"></div>
+    <div class="center-bottom">
+        <form action="./" method="post" role="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control button-rounded" id="nickname" placeholder="Nickname"
+                           autocomplete="off"/>
+                </div>
+            </div>
+            <div class="btn-group input-group text-center">
+                <button class="button button-glow  button-border button-rounded button-inverse button-block input-group">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- THREE.JS JavaScript -->
+<script src="./vendor/three.js/three.min.js"></script>
+<script src="./vendor/three.js/js/loaders/collada/Animation.js"></script>
+<script src="./vendor/three.js/js/loaders/collada/AnimationHandler.js"></script>
+<script src="./vendor/three.js/js/loaders/collada/KeyFrameAnimation.js"></script>
+
+<script src="./vendor/three.js/js/loaders/ColladaLoader.js"></script>
+
+<script src="./vendor/three.js/js/Detector.js"></script>
+
+<script>
+
+    var width = window.innerWidth * 0.5, height = window.innerHeight * 0.5;
+    if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+    var container;
+
+    var camera, scene, renderer, objects;
+    var particleLight;
+    var dae;
+
+    var loader = new THREE.ColladaLoader();
+    loader.options.convertUpAxis = true;
+    loader.load( './assets/models/miku/model.dae', function ( collada ) {
+
+        dae = collada.scene;
+
+        dae.traverse( function ( child ) {
+
+            if ( child instanceof THREE.SkinnedMesh ) {
+
+                var animation = new THREE.Animation( child, child.geometry.animation );
+                animation.play();
+
+            }
+
+        } );
+
+        dae.scale.x = dae.scale.y = dae.scale.z = 0.04;
+        dae.updateMatrix();
+
+        init();
+        animate();
+
+    } );
+
+    function init() {
+        container = document.getElementById( 'container' );
+
+
+        camera = new THREE.PerspectiveCamera( 45, width / height, 1, 2000 );
+        camera.position.set( 2, 7, 3 );
+
+        scene = new THREE.Scene();
+
+        // Grid
+
+        var size = 5, step = 1;
+
+        var geometry = new THREE.Geometry();
+        var material = new THREE.LineBasicMaterial( { color: 0x303030 } );
+
+        for ( var i = - size; i <= size; i += step ) {
+
+            geometry.vertices.push( new THREE.Vector3( - size, - 0.04, i ) );
+            geometry.vertices.push( new THREE.Vector3(   size, - 0.04, i ) );
+
+            geometry.vertices.push( new THREE.Vector3( i, - 0.04, - size ) );
+            geometry.vertices.push( new THREE.Vector3( i, - 0.04,   size ) );
+
+        }
+
+        var line = new THREE.LineSegments( geometry, material );
+        scene.add( line );
+
+        // Add the COLLADA
+
+        scene.add( dae );
+
+        particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
+        scene.add( particleLight );
+
+        // Lights
+
+        scene.add( new THREE.AmbientLight( 0xcccccc ) );
+
+        var directionalLight = new THREE.DirectionalLight(/*Math.random() * 0xffffff*/0xeeeeee );
+        directionalLight.position.x = Math.random() - 0.5;
+        directionalLight.position.y = Math.random() - 0.5;
+        directionalLight.position.z = Math.random() - 0.5;
+        directionalLight.position.normalize();
+        scene.add( directionalLight );
+
+        var pointLight = new THREE.PointLight( 0xffffff, 4 );
+        particleLight.add( pointLight );
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( width, height );
+        container.appendChild( renderer.domElement );
+
+
+        //
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( width, height );
+
+    }
+
+    //
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        render();
+
+    }
+
+    var clock = new THREE.Clock();
+
+    function render() {
+
+        var timer = Date.now() * 0.0005;
+
+        camera.position.x = Math.cos( timer ) * 20;
+        camera.position.y = 7;
+        camera.position.z = Math.sin( timer ) * 20;
+
+        camera.lookAt( scene.position );
+
+        particleLight.position.x = Math.sin( timer * 4 ) * 3009;
+        particleLight.position.y = Math.cos( timer * 5 ) * 4000;
+        particleLight.position.z = Math.cos( timer * 4 ) * 3009;
+
+        THREE.AnimationHandler.update( clock.getDelta() );
+
+        renderer.render( scene, camera );
+
+    }
+
+</script>
+</body>
+</html>

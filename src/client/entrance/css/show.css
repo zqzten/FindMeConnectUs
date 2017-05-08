@@ -1,0 +1,121 @@
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    background-color: #030303;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+@media (min-width: 768px) {
+    p {
+        margin: 0 0 35px;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+}
+a {
+    color: #42DCA3;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #1d9b6c;
+}
+.light {
+    font-weight: 400;
+}
+
+.intro-title{
+    z-index: 9;
+    margin: 14px;
+    height: auto;
+    padding: 14px;
+    text-align: center;
+}
+
+.intro-title .brand-heading{
+    font-size: 24px;
+}
+
+
+.center-bottom {
+    display: table;
+    margin-top: -7%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    z-index: 9;
+}
+
+.form-group{
+}
+
+.input-group{
+    margin-top: 0;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.form-group .input-group {
+    background: transparent;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.input-group .form-control {
+    background-color: #090909;
+    height: 40px;
+    border: 0;
+}
+
+.canvas{
+    width: 50%;
+    height: 50%;
+    margin-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+
+}
+
+.container{
+    width: 100%;
+}
+
+.welcome {
+    padding-bottom: 3%;
+}
+
+.welcome h1{
+    text-transform: none;
+    font-family: 'Ravi Prakash', "Helvetica Neue", cursive;
+    font-size: 60px;
+}
+

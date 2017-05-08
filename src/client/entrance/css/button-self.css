@@ -1,0 +1,33 @@
+.button-in-glow {
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: glowing-in;
+    animation-name: glowing-in; }
+.button-in-glow:active, .button-in-glow.active, .button-in-glow.is-active {
+    -webkit-animation-name: none;
+    animation-name: none; }
+
+@-webkit-keyframes glowing-in {
+    from {
+        background-color: #222;
+    }
+    50% {
+    background-color: rgba(34, 34, 34, 0.3);
+    }
+    to {
+        background-color: #222;
+    }
+}
+@keyframes glowing-in {
+    from {
+        background-color: #222;
+    }
+    50% {
+        background-color: white;
+    }
+    to {
+        background-color: #222;
+    }
+}
