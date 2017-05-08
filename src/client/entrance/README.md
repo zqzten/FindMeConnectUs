@@ -1,5 +1,5 @@
 # FMCUClient - Entrance
-这是 Find Me Connect Us 前端的游戏入口部分。
+这是 FindMeConnectUs 前端的游戏入口部分。
 
 ## 文件目录
 * `assets` 静态资源目录
