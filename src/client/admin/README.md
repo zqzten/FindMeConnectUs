@@ -1,7 +1,7 @@
 # FMCUClient - Admin
 这是 Find Me Connect Us 前端的个人管理部分。
 
-## 文件结构
+## 文件目录
 * `build` webpack 相关配置文件目录
     * `build.js` 生产环境结构代码
     * `check-version.js` 检查 node、npm 等版本

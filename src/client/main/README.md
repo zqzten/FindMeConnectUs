@@ -1,7 +1,7 @@
 # FMCUClient - Main
 这是 Find Me Connect Us 前端的游戏过程部分。
 
-## 文件结构
+## 文件目录
 * `assets` 静态资源目录
 * `src` 源代码目录
 * `package.json` npm 配置文件
