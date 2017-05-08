@@ -8,6 +8,7 @@ import "../css/main.css";
 
 // import js
 import * as THREE from "three";
+// import * as TrackballControls from "three-trackballcontrols";
 import { ROOM_SIZE, WALL_HEIGHT, WALL_THICKNESS, Room } from "./room";
 import { Player } from "./player";
 import { KineticControl } from "./kinetic_control";
@@ -65,7 +66,7 @@ wallModel.castShadow = true;
 let currentPlayerModel = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshPhongMaterial({ color:0xffffff }));
 
 // make sky
-let sky = new THREE.Mesh(new THREE.SphereGeometry(1000, 1000, 1000), skyMaterial);
+let sky = new THREE.Mesh(new THREE.SphereGeometry(1000, 100, 10), skyMaterial);
 sky.position.set(worldWidth / 2, 0, worldHeight / 2);
 scene.add(sky);
 
