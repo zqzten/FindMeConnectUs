@@ -12,7 +12,7 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080 (must build first for HTML changes!)
 npm run start
 
 # build for production

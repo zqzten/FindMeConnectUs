@@ -25,32 +25,30 @@ export class Room {
         for (let i = 0; i < 4; i++) {
             if (this.walls[i] === null) {
                 let wall = wallModel.clone();
-                let wallGroup = new THREE.Group();
-                wall.add(wall);
 
-                wallGroup.position.y = origin.y + WALL_HEIGHT / 2;
+                wall.position.y = origin.y + WALL_HEIGHT / 2;
                 switch (i) {
                     // north
                     case 0:
-                        wallGroup.position.x = origin.x + ROOM_SIZE / 2;
-                        wallGroup.position.z = origin.z;
+                        wall.position.x = origin.x + ROOM_SIZE / 2;
+                        wall.position.z = origin.z;
                         break;
                     // south
                     case 1:
-                        wallGroup.position.x = origin.x + ROOM_SIZE / 2;
-                        wallGroup.position.z = origin.z + ROOM_SIZE;
+                        wall.position.x = origin.x + ROOM_SIZE / 2;
+                        wall.position.z = origin.z + ROOM_SIZE;
                         break;
                     // west
                     case 2:
-                        wallGroup.rotation.y = Math.PI / 2;
-                        wallGroup.position.x = origin.x;
-                        wallGroup.position.z = origin.z + ROOM_SIZE / 2;
+                        wall.rotation.y = Math.PI / 2;
+                        wall.position.x = origin.x;
+                        wall.position.z = origin.z + ROOM_SIZE / 2;
                         break;
                     // east
                     case 3:
-                        wallGroup.rotation.y = Math.PI / 2;
-                        wallGroup.position.x = origin.x + ROOM_SIZE;
-                        wallGroup.position.z = origin.z + ROOM_SIZE / 2;
+                        wall.rotation.y = Math.PI / 2;
+                        wall.position.x = origin.x + ROOM_SIZE;
+                        wall.position.z = origin.z + ROOM_SIZE / 2;
                         break;
                 }
 
