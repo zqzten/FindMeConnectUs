@@ -8,7 +8,7 @@
 * `webpack.config.js` webpack 配置文件
 
 ## 构建命令
-``` bash
+```shell
 # install dependencies
 npm install
 
