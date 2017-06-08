@@ -1,19 +1,20 @@
 import * as THREE from "three";
+import {WALL_HEIGHT} from "../js/room";
 
 export class KineticControl {
-    constructor(camera, domElement, player) {
+    constructor(domElement) {
         this.colObj = [];
-        this.player = player;
-        this.camera = camera;
         this.direction = new THREE.Vector3(0, 0, 0);
         this.domElement = domElement;
         this.enable = true;
-        this.moveSpeed = 20;
+        this.moveSpeed = 10;
         this.lookSpeed = 0.1;
         this.lockAxisY = false;
         this.enableLook = true;
         this.angleLock = 80;
         this.autoSpeedFactor = 0.0;
+        this.oldMouseX = 0;
+        this.oldMouseY = 0;
         this.mouseX = 0;
         this.mouseY = 0;
         this.lat = 0;
@@ -26,9 +27,24 @@ export class KineticControl {
         this.moveD = false;
         this.halfX = this.domElement.offsetWidth / 2;
         this.halfY = this.domElement.offsetHeight / 2;
+        this.pickMouse = new THREE.Vector2();
 
-        let playerSize = (new THREE.Box3().setFromObject(player.model)).getSize();
-        this.camera.position.set(player.model.position.x, playerSize.y, player.model.position.z);
+       
+    }
+
+
+    setPlayer(player) {
+        this.player = player;
+    }
+
+    setCamera(camera) {
+        this.camera = camera;
+    }
+
+    regist() {
+        console.log(this.player);
+        let playerSize = (new THREE.Box3().setFromObject(this.player.model)).getSize();
+        this.camera.position.set(this.player.model.position.x, playerSize.y, this.player.model.position.z);
 
         if (this.domElement !== document) {
             this.domElement.setAttribute("tabindex", "-1");
@@ -36,14 +52,50 @@ export class KineticControl {
         this.bonMouseMove = this.bind(this, this.onMouseMove);
         this.bonKeyDown = this.bind(this, this.onKeyDown);
         this.bonKeyUp = this.bind(this, this.onKeyUp);
+        this.bonTestForPick = this.bind(this,this.testForPick);
         this.domElement.addEventListener("contextmenu", KineticControl.contextMenu, false);
         this.domElement.addEventListener("mousemove", this.bonMouseMove, false);
         window.addEventListener("keydown", this.bonKeyDown, false);
         window.addEventListener("keyup", this.bonKeyUp, false);
+        window.addEventListener("click", this.bonTestForPick, false);
     }
 
     addCollision(obj) {
         this.colObj.push(obj);
+    }
+
+    testForPick(e) {
+        let ray = new THREE.Raycaster();
+        ray.setFromCamera(this.pickMouse,this.camera);
+        let pickResult = ray.intersectObjects(this.colObj);
+        if (pickResult.length > 0) {
+            let fObj = pickResult[0].object;
+            console.log(fObj.craft);
+            if(fObj.craft != undefined) {
+                let craft = fObj.craft;
+                if (this.player.isKeyCondition) {
+                    if (craft.isDoor) {
+                        console.log("success");
+                        fObj.position.y -= (WALL_HEIGHT * 2);
+                    }
+                    else {
+                        console.log("lose cauz' it's not a door");
+                    }
+                    this.player.isKeyCondition = false;
+                }
+                else {
+                    if(this.player.isVoteCondition) {
+                        if(craft.pickable) {
+                            this.control.changeVote(this.player.index,craft);
+
+                        }
+                    }
+
+                }
+            }
+            
+        }
+
     }
 
     testForCollision(model, dx, dy, dz) {
@@ -74,9 +126,12 @@ export class KineticControl {
         };
     }
 
+
     onMouseMove(e) {
         this.mouseX = e.pageX - this.domElement.offsetLeft - this.halfX;
         this.mouseY = e.pageY - this.domElement.offsetTop - this.halfY;
+        this.pickMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        this.pickMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     }
 
     onKeyDown(e) {
@@ -142,13 +197,15 @@ export class KineticControl {
             this.camera.position.z = dz;
         }
         speed = this.enableLook === true ? delta * this.lookSpeed : 0;
-
+       // if (this.oldMouseX == this.mouseX && this.oldMouseY == this.mouseY) return;
+        this.oldMouseX = this.mouseX;
+        this.oldMouseY = this.mouseY;
         this.lon += this.mouseX * speed;
         if (!this.lockAxisY) this.lat -= this.mouseY * speed;
         this.lat = Math.max(-this.angleLock, Math.min(this.angleLock, this.lat));
         this.angleX = THREE.Math.degToRad(90 - this.lat);
         this.angleZ = THREE.Math.degToRad(this.lon);
-
+       
         this.direction.x = this.camera.position.x + 100 * Math.sin(this.angleX) * Math.cos(this.angleZ);
         this.direction.y = this.camera.position.y + 100 * Math.cos(this.angleX);
         this.direction.z = this.camera.position.z + 100 * Math.sin(this.angleX) * Math.sin(this.angleZ);
