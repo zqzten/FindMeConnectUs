@@ -119,9 +119,8 @@
 </template>
 
 <script>
-
-  export default {
-    name: 'achievement',
-    components: {}
-  }
+    export default {
+        name: 'achievement',
+        components: {}
+    }
 </script>

@@ -1,380 +1,307 @@
+<!-- 表格分页组件 -->
 <template>
-  <div class="animated fadeIn">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i> Simple Table
-          </div>
-          <div class="card-block">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Date registered</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Samppa Nori</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Estavan Lykos</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-danger">Banned</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Chetan Mohamed</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="badge badge-default">Inactive</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Derick Maximinus</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-warning">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Friderik Dávid</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </div>
-        </div>
-      </div><!--/.col-->
-
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i> Striped Table
-          </div>
-          <div class="card-block">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Date registered</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Yiorgos Avraamu</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avram Tarasios</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-danger">Banned</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Quintin Ed</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="badge badge-default">Inactive</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Enéas Kwadwo</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-warning">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Agapetus Tadeáš</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </div>
-        </div>
-      </div><!--/.col-->
-    </div><!--/.row-->
-
-    <div class="row">
-
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i> Condensed Table
-          </div>
-          <div class="card-block">
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Date registered</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Carwyn Fachtna</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nehemiah Tatius</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-danger">Banned</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ebbe Gemariah</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="badge badge-default">Inactive</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Eustorgios Amulius</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-warning">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Leopold Gáspár</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </div>
-        </div>
-      </div><!--/.col-->
-
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i> Bordered Table
-          </div>
-          <div class="card-block">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Date registered</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Pompeius René</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Paĉjo Jadon</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-danger">Banned</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Micheal Mercurius</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="badge badge-default">Inactive</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ganesha Dubhghall</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-warning">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Hiroto Šimun</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </div>
-        </div>
-      </div><!--/.col-->
-
-    </div><!--/.row-->
-
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i> Combined All Table
-          </div>
-          <div class="card-block">
-            <table class="table table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Date registered</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Vishnu Serghei</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Zbyněk Phoibos</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-danger">Banned</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Einar Randall</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span class="badge badge-default">Inactive</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Félix Troels</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span class="badge badge-warning">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Aulus Agmundr</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <nav>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
+    <div>
+        <nav class="boot-nav">
+            <ul class="pagination boot-page">
+                <li>
+                    <a href="javascript:void(0)" aria-label="Previous" @click="onFirstClick()">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div><!--/.col-->
-    </div><!--/.row-->
-  </div>
-
+                <li>
+                    <a href="javascript:void(0)" aria-label="Next" @click="onPrevClick()">
+                        <span aria-hidden="true">‹</span>
+                    </a>
+                </li>
+                <li v-for="page in pages" :class="activeNum === $index ? 'active' : ''">
+                    <a href="javascript:void(0)" v-text="page" @click="onPageClick($index)"></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" aria-label="Next" @click="onNextClick()">
+                        <span aria-hidden="true">›</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" aria-label="Next" @click="onLastClick()">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="page-total">
+                共 <span v-text="pageTotal"></span> 页
+            </div>
+        </nav>
+        <select class="form-control boot-select" v-model="len">
+            <option v-for="arr in lens" :value="arr" v-text="arr" :selected="$index === 0 ? true : false"></option>
+        </select>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'tables'
-}
+    export default {
+        name: 'tables',
+        props: {
+            pages: {
+                type: Array,
+                default: function () {
+                    return [1]
+                }
+            },
+
+            async: {
+                type: Boolean,
+                default: false
+            },
+
+            len: {
+                type: Number,
+                default: 5
+            },
+
+            lens: {
+                type: Array,
+                default: function () {
+                    return [5, 50, 100]
+                }
+            },
+
+            data: {
+                type: Array,
+                default: function () {
+                    return []
+                }
+            },
+
+            url: {
+                type: String,
+                default: ''
+            },
+
+            pageLen: {
+                type: Number,
+                default: 5
+            },
+
+            pageTotal: {
+                type: Number,
+                default: 1
+            },
+
+            // 参数内容
+            param: {
+                type: Object,
+                default: function () {
+                    return {}
+                }
+            }
+        },
+        data () {
+            return {
+                activeNum: 0
+            }
+        },
+        methods: {
+
+            // 点击页码刷新数据
+            onPageClick (index) {
+                this.activeNum = index
+            },
+
+            // 上一页
+            onPrevClick () {
+                if (this.activeNum > 0) {
+                    this.activeNum = this.activeNum - 1
+                } else {
+                    if (this.pages[0] !== 1) {
+                        let newPages = []
+
+                        for (let i = 0; i < this.pages.length; i++) {
+                            newPages[i] = this.pages[i] - 1
+                        }
+
+                        this.pages = newPages
+                        this.getData()
+                    }
+                }
+            },
+
+            // 下一页
+            onNextClick () {
+                if (this.activeNum < this.pages.length - 1) {
+                    this.activeNum = this.activeNum + 1
+                } else {
+                    if (this.pages[this.pages.length - 1] < this.pageTotal) {
+                        let newPages = []
+
+                        for (let i = 0; i < this.pages.length; i++) {
+                            newPages[i] = this.pages[i] + 1
+                        }
+
+                        this.pages = newPages
+
+                        this.getData()
+                    }
+                }
+            },
+
+            // 第一页
+            onFirstClick () {
+                if (this.pages[0] === 1) {
+                    this.activeNum = 0
+                } else {
+                    let originPage = []
+
+                    for (let i = 1; i <= this.pageLen; i++) {
+                        originPage.push(i)
+                    }
+
+                    this.pages = originPage
+                    this.activeNum === 0 ? this.getData() : this.activeNum = 0
+                }
+            },
+
+            // 最后一页
+            onLastClick () {
+                if (this.pageTotal <= this.pageLen) {
+                    this.activeNum = this.pages.length - 1
+                } else {
+                    let lastPage = []
+
+                    for (let i = this.pageLen - 1; i >= 0; i--) {
+                        lastPage.push(this.pageTotal - i)
+                    }
+
+                    this.pages = lastPage
+                    this.activeNum === this.pages.length - 1 ? this.getData() : this.activeNum = this.pages.length - 1
+                }
+            },
+
+            // 获取页码
+            getPages () {
+                this.pages = []
+
+                if (!this.async) {
+                    this.pageTotal = Math.ceil(this.data.length / this.len)
+                }
+
+                // 比较总页码和显示页数
+                if (this.pageTotal <= this.pageLen) {
+                    for (let i = 1; i <= this.pageTotal; i++) {
+                        this.pages.push(i)
+                    }
+                } else {
+                    for (let i = 1; i <= this.pageLen; i++) {
+                        this.pages.push(i)
+                    }
+                }
+            },
+
+            // 页码变化获取数据
+            /* eslint-disable no-new */
+            getData () {
+                if (!this.async) {
+                    let len, pageNum, newData
+                    len = this.len
+                    pageNum = this.pages[this.activeNum] - 1
+                    newData = []
+
+                    for (let i = pageNum * len; i < (pageNum * len + len); i++) {
+                        this.data[i] !== undefined ? newData.push(this.data[i]) : ''
+                    }
+
+                    this.$dispatch('data', newData)
+                } else {
+                    this.param.active = this.pages[this.activeNum]
+                    this.param.len = this.len
+
+                    this.$http({
+                        url: this.url,
+                        method: 'POST',
+                        data: this.param
+                    })
+                        .then(function (response) {
+                            this.pageTotal = response.data.page_num
+
+                            if (this.pages.length !== this.pageLen || this.pageTotal < this.pageLen) {
+                                this.getPages()
+                            }
+
+                            if (!response.data.data.length) {
+                                this.activeNum = this.pageTotal - 1
+                            }
+
+                            this.$dispatch('data', response.data.data)
+                        })
+                }
+            },
+
+            // 刷新表格
+            refresh () {
+                this.getData()
+            },
+
+            // 重置并刷新表格
+            refresh2 () {
+                this.pages = [1]
+
+                this.activeNum === 0 ? this.getData() : this.activeNum = 0
+            }
+        },
+        ready () {
+            if (!this.async) {
+                this.getPages()
+            }
+
+            this.getData()
+        },
+        watch: {
+
+            // 监听显示数量
+            'len' (newVal, oldVal) {
+                if (!this.async) {
+                    this.getPages()
+
+                    if (this.activeNum + 1 > this.pages.length) {
+                        this.activeNum = this.pages.length - 1
+                    }
+
+                    this.getData()
+                } else {
+                    this.refresh2()
+                }
+            },
+
+            // 监测当前页变化
+            'activeNum' (newVal, oldVal) {
+                this.getData()
+            }
+        },
+        events: {
+            'refresh::page' () {
+                this.refresh()
+            }
+        }
+    }
 </script>
+
+<style scoped>
+    .boot-select {
+        float: right;
+        width: 80px;
+    }
+
+    .boot-nav {
+        float: right;
+    }
+
+    .boot-page {
+        display: inline-block;
+        margin: 2px 10px 0 20px;
+        vertical-align: middle;
+    }
+
+    .page-total {
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
