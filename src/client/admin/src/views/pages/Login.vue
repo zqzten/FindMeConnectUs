@@ -1,49 +1,111 @@
 <template>
-  <div class="app flex-row align-items-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card-group mb-0">
-            <div class="card p-4">
-              <div class="card-block">
-                <h1>Login</h1>
-                <p class="text-muted">Sign In to your account</p>
-                <div class="input-group mb-3">
-                  <span class="input-group-addon"><i class="icon-user"></i></span>
-                  <input type="text" class="form-control" placeholder="Username">
-                </div>
-                <div class="input-group mb-4">
-                  <span class="input-group-addon"><i class="icon-lock"></i></span>
-                  <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <button type="button" class="btn btn-primary px-4">Login</button>
-                  </div>
-                  <div class="col-6 text-right">
-                    <button type="button" class="btn btn-link px-0">Forgot password?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card card-inverse card-primary py-5 d-md-down-none" style="width:44%">
-              <div class="card-block text-center">
-                <div>
-                  <h2>Sign up</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <button type="button" class="btn btn-primary active mt-3">Register Now!</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="background">
+        <Row type="flex" align="middle">
+            <Col span="8" offset="8">
+            <Card class="" dis-hover class="card-box">
+                <p slot="title" class="card-header-r">SIGN IN</p>
+                <router-link :to="'/pages/Register'" slot="extra" class="card-header-r">
+                    <Icon type="ios-compose"></Icon>
+                    Sign Up
+                </router-link>
+                <Form ref="form" :model="form" :rules="rule" class="form">
+                    <Form-item prop="user">
+                        <Input type="text" v-model="form.username" placeholder="Username" size="large">
+                        <Icon type="ios-person-outline" slot="prepend"></Icon>
+                        </Input>
+                    </Form-item>
+                    <Form-item prop="password">
+                        <Input type="password" v-model="form.password" placeholder="Password" size="large">
+                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                        </Input>
+                    </Form-item>
+                    <Form-item>
+                        <Button type="primary" @click="login('formInline')" long size="large">Sign In</Button>
+                    </Form-item>
+                </Form>
+            </Card>
+            </Col>
+        </Row>
     </div>
-  </div>
 </template>
 
 <script>
-export default {
-  name: 'Login'
-}
+    import 'iview/dist/styles/iview.css'
+    import api from '../../api'
+    import router from '../../router'
+
+    export default {
+        name: 'Login',
+        data () {
+            return {
+                form: {
+                    username: '',
+                    password: '',
+                    withCredentials: true
+                },
+                rule: {
+                    username: [
+                        {required: true, message: '请填写用户名', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: '请填写密码', trigger: 'blur'},
+                        {type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur'}
+                    ]
+                }
+            }
+        },
+        methods: {
+            login () {
+                api.login(this.form).then(response => {
+                    if (response.status === 200) {
+                        router.push({path: '/hall'})
+                    }
+                }).catch(error => {
+                    console.log('this is error: ' + error.response)
+                    if (error.response.data.code === 'user_not_exist') {
+                        this.error('用户名不存在!')
+                    } else if (error.response.data.code === 'password_mismatch') {
+                        this.error('密码不正确!')
+                    }
+                })
+            },
+            success (success) {
+                this.$Message.success(success)
+            },
+            error (error) {
+                this.$Message.error(error)
+            }
+        }
+    }
 </script>
+
+<style scoped>
+
+    .card-box {
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        background-clip: padding-box;
+        width: 100%;
+        border: 1px solid #dddee1;
+        background-color: #f8f8f9;
+        margin: 140px auto;
+    }
+
+    .background {
+        width: 100%;
+        height: 100vh;
+        background-color: #f8f8f9;
+        border: 1px solid;
+    }
+
+    .card-header-r {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .form {
+        margin-top: -10px;
+    }
+</style>

@@ -1,93 +1,104 @@
 <template>
     <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Records
-                    </div>
-                    <div class="card-block">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Role</th>
-                                <th>Date</th>
-                                <th>Rank</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Ta</td>
-                                <td>2017/05/05</td>
-                                <td><span class="badge badge-warning"><i class="fa fa-trophy"></i></span> No.1</td>
-                                <td>
-                                    <span class="badge badge-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ta</td>
-                                <td>2017/05/04</td>
-                                <td><span class="badge badge-default"><i class="fa fa-trophy"></i></span> No.2</td>
-                                <td>
-                                    <span class="badge badge-danger">Defeat</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ta</td>
-                                <td>2017/05/03</td>
-                                <td><span class="badge badge-success"><i class="fa fa-trophy"></i></span> No.3</td>
-                                <td>
-                                    <span class="badge badge-success">Victory</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ta</td>
-                                <td>2017/04/30</td>
-                                <td><span class="badge badge-primary"><i class="fa fa-gamepad"></i></span> No.4</td>
-                                <td>
-                                    <span class="badge badge-danger">Defeat</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ta</td>
-                                <td>2017/04/29</td>
-                                <td><span class="badge badge-primary"><i class="fa fa-gamepad"></i></span> No.5</td>
-                                <td>
-                                    <span class="badge badge-success">Victory</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ta</td>
-                                <td>2017/04/29</td>
-                                <td><span class="badge badge-primary"><i class="fa fa-gamepad"></i></span> No.6</td>
-                                <td>
-                                    <span class="badge badge-success">Victory</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!--/.col-->
+        <Table :data="data1" :columns="tableColumns" stripe></Table>
+        <div style="margin: 10px;overflow: hidden">
+            <div style="float: right;">
+                <Page :total="total" :current="1" @on-change="changePage"></Page>
+            </div>
         </div>
     </div>
 </template>
-
 <script>
+    import 'iview/dist/styles/iview.css'
+    import api from '../api'
+    import { formatDate } from '../utils'
 
-  export default {
-    name: 'records',
-    components: {}
-  }
+    export default {
+        data () {
+            return {
+                records: [],
+                data1: [],
+                total: 0,
+                tableColumns: [
+                    {
+                        title: 'Game',
+                        key: 'gameID'
+                    },
+                    {
+                        title: '状态',
+                        key: 'status',
+                        render: (h, params) => {
+                            const row = params.row
+
+                            let color, text
+                            if (row.status === 1) {
+                                color = 'blue'
+                                text = '胜利'
+                            } else if (row.status === 2) {
+                                color = 'red'
+                                text = '失败'
+                            } else {
+                                color = 'gray'
+                                text = '游戏未完成'
+                            }
+
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text)
+                        }
+                    },
+                    {
+                        title: '得分',
+                        key: 'score'
+                    },
+                    {
+                        title: '地图长度',
+                        key: 'mapLength'
+                    },
+                    {
+                        title: '地图宽度',
+                        key: 'mapWidth'
+                    },
+                    {
+                        title: '时间',
+                        key: 'time',
+                        render: (h, params) => {
+                            return h('div', formatDate(this.data1[params.index].update))
+                        }
+                    }
+                ]
+            }
+        },
+        mounted () {
+            this.getRecords()
+        },
+        methods: {
+            getRecords () {
+                api.getRecords().then(response => {
+                    this.records = this.split(response.data)
+                    this.total = response.data.length
+                    this.data1 = this.records[0]
+                }).catch(error => {
+                    console.log(error.response)
+                })
+            },
+            changePage (index) {
+                this.data1 = this.records[index - 1]
+            },
+            split (obj) {
+                let length = obj.length
+                let list = []
+                for (let i = 0; i < Math.ceil(length / 8); i++) {
+                    list[i] = []
+                    for (let j = 0; j < 8; j++) {
+                        list[i].push(obj[8 * i + j])
+                    }
+                }
+                return list
+            }
+        }
+    }
 </script>

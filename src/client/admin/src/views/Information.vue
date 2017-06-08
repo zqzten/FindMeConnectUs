@@ -11,23 +11,23 @@
                             <tbody>
                             <tr>
                                 <th>Nickname</th>
-                                <td colspan="3">Ta</td>
+                                <td colspan="3">{{username}}</td>
                             </tr>
                             <tr>
-                                <th>E-mail</th>
-                                <td colspan="3">example@email.com</td>
+                                <th>UserID</th>
+                                <td colspan="3">{{ user_id }}</td>
                             </tr>
                             <tr>
                                 <th>Date registered</th>
-                                <td colspan="3">2017/04/08</td>
+                                <td colspan="3">{{ registered_date }}</td>
                             </tr>
                             <tr>
                                 <th>Games</th>
-                                <td colspan="3">9999</td>
+                                <td colspan="3">{{games}}</td>
                             </tr>
                             <tr>
                                 <th>Signature</th>
-                                <td colspan="3">Which western country i haven't gotten there</td>
+                                <td colspan="3">{{signature}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -39,9 +39,19 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
 
-  export default {
-    name: 'information',
-    components: {}
-  }
+    export default {
+        name: 'information',
+        components: {},
+        computed: {
+            ...mapGetters([
+                'username',
+                'user_id',
+                'registered_date',
+                'games',
+                'signature'
+            ])
+        }
+    }
 </script>

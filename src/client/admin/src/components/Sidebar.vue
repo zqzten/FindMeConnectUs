@@ -2,9 +2,6 @@
     <div class="sidebar">
         <nav class="sidebar-nav">
             <ul class="nav">
-                <li class="nav-title text-center">
-                    Function List
-                </li>
                 <li class="nav-item">
                     <router-link :to="'/role'" class="nav-link" exact><i class="icon-ghost"></i> Role </router-link>
                 </li>
@@ -21,7 +18,8 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link :to="'/chatting-room'" class="nav-link" exact><i class="icon-bubbles"></i> Chatting Room
+                    <router-link :to="'/chatting-room'" class="nav-link" exact><i class="icon-bubbles"></i>
+                        Chatting Room
                     </router-link>
                 </li>
             </ul>
@@ -30,19 +28,19 @@
 </template>
 <script>
 
-  export default {
-    name: 'sidebar',
-    methods: {
-      handleClick (e) {
-        e.preventDefault()
-        e.target.parentElement.classList.toggle('open')
-      }
+    export default {
+        name: 'sidebar',
+        methods: {
+            handleClick (e) {
+                e.preventDefault()
+                e.target.parentElement.classList.toggle('open')
+            }
+        }
     }
-  }
 </script>
 
 <style lang="css">
     .nav-link {
-        cursor:pointer;
+        cursor: pointer;
     }
 </style>
