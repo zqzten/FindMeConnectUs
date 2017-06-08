@@ -50,10 +50,10 @@
                             <a href="#page-top"></a>
                         </li>
                         <li>
-                            <a class="page-scroll" data-toggle="modal" data-target="#LoginModal">Sign in</a>
+                            <a class="page-scroll" data-toggle="modal" data-target="#LoginModal" href="http://fmcu.eastasia.cloudapp.azure.com/admin.html/#/pages/Login">Sign in</a>
                         </li>
                         <li>
-                            <a class="page-scroll" data-toggle="modal" data-target="#RegisterModal">Sign up</a>
+                            <a class="page-scroll" data-toggle="modal" data-target="#RegisterModal" href="http://fmcu.eastasia.cloudapp.azure.com/admin.html/#/pages/Register">Sign up</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="">Home</a>
@@ -74,8 +74,8 @@
                             <h1 class="brand-heading">FindMeConnectUs</h1>
                             <p class="intro-text">An excited but not naive game.
                                 <br>More difficult than other games.</p>
-                            <button type="button" class="btn-self btn-gamepad">
-                                <a href="" title="Game Now!"> <div class="fa fa-gamepad animated" ></div></a>
+                            <button type="button" class="btn-self btn-gamepad" id="start">
+                                <a title="Game Now!"> <div class="fa fa-gamepad animated" ></div></a>
                             </button>
 
                         </div>
@@ -91,91 +91,6 @@
             </div>
         </footer>
 
-        <!-- Modal -->
-        <div class="modal fade" id="LoginModal" role="form" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content modal-gray">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Sign In</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post" class="form-group">
-                            <div class="form-group">
-
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <input type="text" class="form-control" id="username-l" placeholder="Username" autocomplete="off" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-lock"></i>
-                                    </div>
-                                    <input type="password" class="form-control" id="password-l" placeholder="Password" autocomplete="off" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer btn-group-sm">
-                        <div class="col-sm-8 in-height checkbox">
-                            <label><input type="checkbox" value="1">Continue you life</label></div>
-                        <button type="button" class="btn btn-login">
-                            Sign in
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="RegisterModal" role="form" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content modal-gray">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Sign Up</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post" class="form-group">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <input type="text" class="form-control" id="username-r" placeholder="Username" autocomplete="off" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </div>
-                                    <input type="email" class="form-control" id="emial-r" placeholder="Email Address" autocomplete="off" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-lock"></i>
-                                    </div>
-                                    <input type="password" class="form-control" id="password-r" placeholder="Password" autocomplete="off" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer btn-group-sm">
-                        <div class="col-sm-9 in-height checkbox">
-                            <label><input type="checkbox" value="1">Agree on <a href="" >our policy</a> +1s</label></div>
-                        <button type="submit" class="btn btn-login">
-                            Sign up
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -189,7 +104,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
     <!-- Three.js -->
-    <script src="./vendor/three.js/three.min.js"></script>
+    <script src="./js/three.min.js"></script>
     <script src="./vendor/three.js/js/controls/TrackballControls.js"></script>
     <script src="./js/test_0.js"></script>
     <script>
@@ -201,7 +116,7 @@
         var plane,group,group2,angle;
         var overRenderer;
         var container;
-
+        var flag;
         var distance = 100000, distanceTarget = 100000;
         var padding = 40;
         var PI_HALF = Math.PI / 2;
@@ -258,7 +173,6 @@
 
             scene = new THREE.Scene();
 
-
             camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1,  100000);
             camera.position.x = 0;
             camera.position.y = 0;
@@ -276,10 +190,10 @@
 
 
             plane=create_geometry_0(scene);
-            plane.scale.x=5;
-            plane.scale.y=5;
-            plane.scale.z=5;
-            plane.position.z=300;
+            plane.scale.x=8;
+            plane.scale.y=8;
+            plane.scale.z=8;
+            plane.position.z=400;
             plane.rotation.z=Math.PI/2;
             group2=new THREE.Object3D();
             group2.add(plane);
@@ -320,7 +234,7 @@
             mesh = new THREE.Mesh(geometry, material);
             mesh.scale.set(1.1, 1.1, 1.1);
             scene.add(mesh);
-            addPoint(90,40);
+            addPoint(60,40);
             var cosangle=(plane.position.x*point.position.x+plane.position.y*point.position.y+point.position.z*plane.position.z)/40000;
             angle=Math.acos(cosangle);
             //document.getElementById("test").innerHTML=point.position.x+"  "+point.position.y+" "+point.position.z;
@@ -332,21 +246,25 @@
             renderer.setClearColor(0x000000, 1);
             controls = new THREE.TrackballControls(camera);
             controls.addEventListener( 'change', render);
-            //  document.getElementById("button").addEventListener('click',fly,false);
+            document.getElementById("start").addEventListener('click',flycontrol,false);
         }
-
+        function flycontrol(){
+            flag=!flag;
+            alert("欢迎来到Find Me Connect Us神秘游戏！")
+            setTimeout("href()", 3000)
+        }
         function fly(){
 
             //if(plane.position.x*plane.position.x+plane.position.y*plane.position.y+plane.position.z*plane.position.z>40000){
-            plane.position.x=plane.position.x+(point.position.x-plane.position.x)/300;
+            plane.position.x=plane.position.x+(point.position.x-plane.position.x)/150;
 //}
             //if(plane.position.x*plane.position.x+plane.position.y*plane.position.y+plane.position.z*plane.position.z>40000){
-            plane.position.y=plane.position.y+(point.position.y-plane.position.y)/300;
+            plane.position.y=plane.position.y+(point.position.y-plane.position.y)/150;
             // }
             // if(plane.position.x*plane.position.x+plane.position.y*plane.position.y+plane.position.z*plane.position.z>40000){
-            plane.position.z=plane.position.z+(point.position.z-plane.position.z)/300;
+            plane.position.z=plane.position.z+((point.position.z)-plane.position.z)/150;
 
-            plane.rotation.y=( plane.rotation.y)+((-angle-plane.rotation.y)/300);
+            plane.rotation.y=( plane.rotation.y)+((-angle-plane.rotation.y)/150);
             // }
 
         }
@@ -358,6 +276,8 @@
             group.rotation.y=(group.rotation.y-0.01)%(Math.PI*2);
             //document.getElementById("test").innerHTML=angle+"  "+point.position.y+" "+point.position.z;
             //fly();
+            if(flag)
+            fly();
             renderer.render(scene, camera);
             controls.update();
         }
@@ -388,8 +308,13 @@
             scene.add(group);
 
         }
+
+        function href(src) {
+            window.location.href = src || "http://http://fmcu.eastasia.cloudapp.azure.com/admin.html"
+        }
         init();
         animate();
+        //fly();
     </script>
 </body>
 </html>
