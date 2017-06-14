@@ -1,0 +1,272 @@
+{
+    "images": [{
+        "uuid": "16F8AAAC-CE99-3E18-9AC4-3534E7322497",
+        "name": "BusinessCard(front).jpg",
+        "url": "BusinessCard(front).jpg"
+    },{
+        "uuid": "47372C91-0499-39FB-8E67-CB77AB3858DE",
+        "name": "BusinessCard(back).jpg",
+        "url": "BusinessCard(back).jpg"
+    }],
+    "materials": [{
+        "blending": "NormalBlending",
+        "side": 2,
+        "name": "Standard",
+        "emissive": 0,
+        "ambient": 11579568,
+        "uuid": "93831B89-11B9-31B1-A879-E029ECAF81F2",
+        "depthWrite": true,
+        "specular": 1644825,
+        "shininess": 50,
+        "map": "35F61927-3D0A-3FCB-BE68-2F5C5D3AFF37",
+        "color": 11579568,
+        "depthTest": true,
+        "vertexColors": false,
+        "type": "MeshPhongMaterial"
+    },{
+        "blending": "NormalBlending",
+        "side": 2,
+        "name": "Standard1",
+        "emissive": 0,
+        "ambient": 11579568,
+        "uuid": "8B031FCE-3051-3CDF-BA91-1FA294050D03",
+        "depthWrite": true,
+        "specular": 1644825,
+        "shininess": 50,
+        "map": "7C64BEB3-79CF-3FDA-A1E7-0CF64D05602A",
+        "color": 11579568,
+        "depthTest": true,
+        "vertexColors": false,
+        "type": "MeshPhongMaterial"
+    }],
+    "object": {
+        "uuid": "060DC58A-7F05-4179-9104-BDC210747C98",
+        "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+        "children": [{
+            "name": "bCard_obj",
+            "uuid": "2A743AA8-359A-34AB-A003-B580E1B9F3CF",
+            "matrix": [-0.231159,-0.103792,0.967364,0,0.969968,0.052758,0.237442,0,-0.075681,0.993199,0.088479,0,0,0,0,1],
+            "visible": true,
+            "type": "Object",
+            "children": [{
+                "name": "back",
+                "uuid": "28FC221E-9548-3FCF-91A3-D225C0CF4716",
+                "matrix": [0.237498,0.971275,0.014807,0,-0.96517,0.234228,0.116554,0,0.109738,-0.041973,0.993074,0,0,0,0,1],
+                "visible": true,
+                "type": "Mesh",
+                "material": "93831B89-11B9-31B1-A879-E029ECAF81F2",
+                "castShadow": true,
+                "receiveShadow": true,
+                "geometry": "1817D49D-75A9-34DB-8904-BDA5BAF92B9C"
+            },{
+                "name": "front1",
+                "uuid": "FDC3BB7F-1D2D-3A6B-A9D2-5F231BBE20B8",
+                "matrix": [0.237498,0.971275,0.014807,0,-0.96517,0.234228,0.116554,0,0.109738,-0.041973,0.993074,0,0,0,0,1],
+                "visible": true,
+                "type": "Mesh",
+                "material": "8B031FCE-3051-3CDF-BA91-1FA294050D03",
+                "castShadow": true,
+                "receiveShadow": true,
+                "geometry": "5B27BB19-2BEC-340E-B6B8-59CEBC4A15D3"
+            }]
+        },{
+            "name": "CameraPreset",
+            "uuid": "B0C4E574-DECC-3D97-99F0-60577F3026BF",
+            "matrix": [-1,0,-0,0,-0,0,1,0,0,1,0,0,-0.422604,2.91872,0.550001,1],
+            "visible": true,
+            "type": "Object",
+            "children": [{
+                "name": "TurnTableCamera",
+                "uuid": "D7C44AB9-C5E4-3E53-805E-02A6D8DC90EC",
+                "matrix": [0.866025,-0.5,0,0,0.25,0.433013,0.866025,0,-0.433013,-0.75,0.5,0,-2.32531,-4.02756,2.68504,1],
+                "visible": true,
+                "type": "PerspectiveCamera",
+                "far": 50000,
+                "near": 0.1,
+                "aspect": 1.77778,
+                "fov": 38.6274
+            }]
+        }],
+        "type": "Scene"
+    },
+    "animations": [{
+        "name": "default",
+        "tracks": [{
+            "name": "CameraPreset.position",
+            "keys": [{
+                "value": [-0.422604,2.91872,0.550001],
+                "time": 0
+            },{
+                "value": [-0.422604,2.91872,0.550001],
+                "time": 120
+            },{
+                "value": [-0.422604,2.91872,0.550001],
+                "time": 240
+            },{
+                "value": [-0.422604,2.91872,0.550001],
+                "time": 360
+            }],
+            "type": "vector3"
+        },{
+            "name": "CameraPreset.scale",
+            "keys": [{
+                "value": [1,1,1],
+                "time": 0
+            },{
+                "value": [1,1,1],
+                "time": 120
+            },{
+                "value": [1,1,1],
+                "time": 240
+            },{
+                "value": [1,1,1],
+                "time": 360
+            }],
+            "type": "vector3"
+        },{
+            "name": "CameraPreset.quaternion",
+            "keys": [{
+                "value": [0,0.707107,0.707107,0],
+                "time": 0
+            },{
+                "value": [-0.612372,-0.353553,-0.353553,0.612372],
+                "time": 120
+            },{
+                "value": [-0.612372,0.353553,0.353553,0.612372],
+                "time": 240
+            },{
+                "value": [-0,0.707107,0.707107,0],
+                "time": 360
+            }],
+            "type": "quaternion"
+        }],
+        "fps": 29
+    }],
+    "metadata": {
+        "version": 4.4,
+        "generator": "io_three",
+        "type": "Object"
+    },
+    "textures": [{
+        "uuid": "35F61927-3D0A-3FCB-BE68-2F5C5D3AFF37",
+        "minFilter": 1008,
+        "magFilter": 1006,
+        "anisotropy": 1,
+        "name": "BusinessCard_front__jpg",
+        "mapping": 300,
+        "image": "16F8AAAC-CE99-3E18-9AC4-3534E7322497",
+        "wrap": [1000,1000],
+        "repeat": [1,1]
+    },{
+        "uuid": "7C64BEB3-79CF-3FDA-A1E7-0CF64D05602A",
+        "minFilter": 1008,
+        "magFilter": 1006,
+        "anisotropy": 1,
+        "name": "BusinessCard_back__jpg",
+        "mapping": 300,
+        "image": "47372C91-0499-39FB-8E67-CB77AB3858DE",
+        "wrap": [1000,1000],
+        "repeat": [1,1]
+    }],
+    "geometries": [{
+        "uuid": "5B27BB19-2BEC-340E-B6B8-59CEBC4A15D3",
+        "data": {
+            "influencesPerVertex": 2,
+            "skinWeights": [],
+            "name": "front1Geometry",
+            "metadata": {
+                "version": 3,
+                "bones": 0,
+                "materials": 1,
+                "generator": "io_three",
+                "morphTargets": 0,
+                "uvs": 1,
+                "vertices": 4,
+                "faces": 1,
+                "normals": 1
+            },
+            "skinIndices": [],
+            "bones": [],
+            "morphTargets": [],
+            "uvs": [[0,0,1,0,1,1,0,1]],
+            "animations": [],
+            "vertices": [-1.75,0,2,1.75,0,2,1.75,0,4,-1.75,0,4],
+            "faces": [43,0,1,2,3,0,0,1,2,3,0,0,0,0],
+            "normals": [0,-1,0]
+        },
+        "materials": [{
+            "blending": "NormalBlending",
+            "shading": "phong",
+            "DbgName": "Standard1",
+            "DbgColor": 15658734,
+            "colorDiffuse": [0.690196,0.690196,0.690196],
+            "mapDiffuseAnisotropy": 1,
+            "depthWrite": true,
+            "colorSpecular": [0.1,0.1,0.1],
+            "colorAmbient": [0.690196,0.690196,0.690196],
+            "DbgIndex": 0,
+            "mapDiffuseRepeat": [1,1],
+            "specularCoef": 50,
+            "visible": true,
+            "transparent": false,
+            "doubleSided": true,
+            "colorEmissive": [0,0,0],
+            "wireframe": false,
+            "mapDiffuse": "BusinessCard(back).jpg",
+            "mapDiffuseWrap": ["RepeatWrapping","RepeatWrapping"],
+            "opacity": 1,
+            "depthTest": true
+        }],
+        "type": "Geometry"
+    },{
+        "uuid": "1817D49D-75A9-34DB-8904-BDA5BAF92B9C",
+        "data": {
+            "influencesPerVertex": 2,
+            "skinWeights": [],
+            "name": "backGeometry",
+            "metadata": {
+                "version": 3,
+                "bones": 0,
+                "materials": 1,
+                "generator": "io_three",
+                "morphTargets": 0,
+                "uvs": 1,
+                "vertices": 4,
+                "faces": 1,
+                "normals": 1
+            },
+            "skinIndices": [],
+            "bones": [],
+            "morphTargets": [],
+            "uvs": [[0,0,1,0,1,1,0,1]],
+            "animations": [],
+            "vertices": [1.75,0.005,2,-1.75,0.005,2,-1.75,0.005,4,1.75,0.005,4],
+            "faces": [43,0,1,2,3,0,0,1,2,3,0,0,0,0],
+            "normals": [0,1,0]
+        },
+        "materials": [{
+            "blending": "NormalBlending",
+            "shading": "phong",
+            "DbgName": "Standard",
+            "DbgColor": 15658734,
+            "colorDiffuse": [0.690196,0.690196,0.690196],
+            "mapDiffuseAnisotropy": 1,
+            "depthWrite": true,
+            "colorSpecular": [0.1,0.1,0.1],
+            "colorAmbient": [0.690196,0.690196,0.690196],
+            "DbgIndex": 0,
+            "mapDiffuseRepeat": [1,1],
+            "specularCoef": 50,
+            "visible": true,
+            "transparent": false,
+            "doubleSided": true,
+            "colorEmissive": [0,0,0],
+            "wireframe": false,
+            "mapDiffuse": "BusinessCard(front).jpg",
+            "mapDiffuseWrap": ["RepeatWrapping","RepeatWrapping"],
+            "opacity": 1,
+            "depthTest": true
+        }],
+        "type": "Geometry"
+    }]
+}
