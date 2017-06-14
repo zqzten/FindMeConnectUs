@@ -1,6 +1,6 @@
 <template>
-    <div class="animated fadeIn">
-        <Table :data="data1" :columns="tableColumns" stripe></Table>
+    <div>
+        <Table :data="table_data" :columns="table_columns" stripe></Table>
         <div style="margin: 10px;overflow: hidden">
             <div style="float: right;">
                 <Page :total="total" :current="1" @on-change="changePage"></Page>
@@ -16,10 +16,9 @@
     export default {
         data () {
             return {
+                table_data: [],
                 records: [],
-                data1: [],
-                total: 0,
-                tableColumns: [
+                table_columns: [
                     {
                         title: 'Game',
                         key: 'gameID'
@@ -29,7 +28,6 @@
                         key: 'status',
                         render: (h, params) => {
                             const row = params.row
-
                             let color, text
                             if (row.status === 1) {
                                 color = 'blue'
@@ -38,7 +36,6 @@
                                 color = 'red'
                                 text = '失败'
                             } else {
-                                color = 'gray'
                                 text = '游戏未完成'
                             }
 
@@ -64,10 +61,7 @@
                     },
                     {
                         title: '时间',
-                        key: 'time',
-                        render: (h, params) => {
-                            return h('div', formatDate(this.data1[params.index].update))
-                        }
+                        key: 'time'
                     }
                 ]
             }
@@ -80,13 +74,13 @@
                 api.getRecords().then(response => {
                     this.records = this.split(response.data)
                     this.total = response.data.length
-                    this.data1 = this.records[0]
+                    this.table_data = this.getData(1)
                 }).catch(error => {
                     console.log(error.response)
                 })
             },
             changePage (index) {
-                this.data1 = this.records[index - 1]
+                this.table_data = this.getData(index)
             },
             split (obj) {
                 let length = obj.length
@@ -98,6 +92,24 @@
                     }
                 }
                 return list
+            },
+            getData (index) {
+                index--
+                let data = []
+                for (let i = 0; i < 8; i++) {
+                    if (this.records[index][i] === undefined) {
+                        break
+                    }
+                    data.push({
+                        gameID: this.records[index][i].gameID,
+                        status: this.records[index][i].state,
+                        score: this.records[index][i].score,
+                        mapLength: this.records[index][i].mapLength,
+                        mapWidth: this.records[index][i].mapWidth,
+                        time: formatDate(this.records[index][i].time)
+                    })
+                }
+                return data
             }
         }
     }

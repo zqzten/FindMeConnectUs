@@ -1,10 +1,12 @@
 /**
  * Created by syang on 2017/6/6.
  */
-
 import axios from 'axios'
+
+const baseURL = 'http://fmcu.eastasia.cloudapp.azure.com:3000'
+
 axios.defaults.timeout = 10000
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = '' // baseURL
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -61,5 +63,6 @@ export default {
     modify,
     getUserInfo,
     getOtherUserInfo,
-    getRecords
+    getRecords,
+    baseURL
 }

@@ -49,7 +49,6 @@ const user = {
         setUserInfo ({commit}) {
             return new Promise((resolve, reject) => {
                 api.getUserInfo().then(response => {
-                    console.log(response.data)
                     commit('SET_USERNAME', response.data['username'])
                     commit('SET_USERID', response.data['id'])
                     commit('SET_AVATAR', response.data['avatarID'])
@@ -63,6 +62,9 @@ const user = {
                     reject(error)
                 })
             })
+        },
+        setSignature ({commit}, signature) {
+            commit('SET_SIGNATURE', signature)
         }
     }
 }

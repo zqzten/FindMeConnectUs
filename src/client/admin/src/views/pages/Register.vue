@@ -1,12 +1,12 @@
 <template>
     <div>
         <Row type="flex" align="middle">
-            <i-col span="10" offset="7">
-                <Card class="" dis-hover class="card-box">
+            <i-col span="12" offset="6">
+                <Card dis-hover class="card-box">
                     <p slot="title" class="card-header-r">SIGN UP</p>
-                    <router-link :to="'/pages/Login'" slot="extra" class="card-header-r">
-                        <Icon type="ios-compose"></Icon>
-                        Sign In
+                    <router-link :to="'/pages/Login'" slot="extra" class="card-header-extra">
+                        <Icon type="social-snapchat-outline"></Icon>
+                        SIGN IN
                     </router-link>
                     <Steps :current="3" direction="vertical">
                         <Step title="个人信息" content="">
@@ -51,7 +51,9 @@
                             </Radio-group>
                         </Step>
                     </Steps>
-                    <Button type="primary" @click="register" long size="large" class="submit">Sign Up
+                    <Button type="primary" @click="register" long size="large" class="submit" :loading="loading">
+                        <span v-if="!loading">Sign Up</span>
+                        <span v-else>Loading...</span>
                     </Button>
                 </Card>
             </i-col>
@@ -108,7 +110,8 @@
                     {url: '/static/models/1/model.json', id: 1},
                     {url: '/static/models/2/model.json', id: 2},
                     {url: '/static/models/3/model.json', id: 3}
-                ]
+                ],
+                loading: false
             }
         },
         components: {
@@ -116,6 +119,7 @@
         },
         methods: {
             register () {
+                this.loading = true
                 const data = {
                     username: this.form['username'],
                     password: this.form['password'],
@@ -123,16 +127,23 @@
                     modelID: this.form['modelID'],
                     signature: this.form['signature']
                 }
-                api.register(data).then(response => {
-                    if (response.status === 200) {
-                        router.push({path: '/hall'})
-                    }
-                }).catch(error => {
-                    console.log(error.response)
-                    if (error.response.data.code === 'username_existed') {
-                        this.error('用户名已经存在')
-                    }
-                })
+                if (data.username !== '' && data.password !== '' && data.signature !== '') {
+                    api.register(data).then(response => {
+                        if (response.status === 200) {
+                            router.push({path: '/hall'})
+                        }
+                    }).catch(error => {
+                        console.log(error.response)
+                        if (error.response.data.code === 'username_existed') {
+                            this.error('用户名已经存在')
+                        } else if (error.response.data.code === 'request_invalid') {
+                            this.error('输入信息有误')
+                        }
+                    })
+                } else {
+                    this.error('信息缺失!')
+                }
+                this.loading = true
             },
             error (error) {
                 this.$Message.error(error)
@@ -145,6 +156,8 @@
 <style>
     .card-box {
         width: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%
     }
 
     .img-col {
@@ -167,8 +180,12 @@
     }
 
     .card-header-r {
-        font-size: 24px;
         text-align: center;
-        margin-top: 10px;
+        margin-top: 5px;
+    }
+
+    .card-header-extra {
+        display: block;
+        margin-top: 5px;
     }
 </style>

@@ -4,60 +4,24 @@
             <div class="message-list">
                 <div class="" v-for="(item, index) in messageList">
                     <div v-if="item.type === 2" class="row row-left">
-                        <div class="avater">
-                            <img src="static/img/images/1.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 1"/>
-                            <img src="static/img/images/2.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 2"/>
-                            <img src="static/img/images/3.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 3"/>
-                            <img src="static/img/images/4.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 4"/>
-                            <img src="static/img/images/5.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 5"/>
-                            <img src="static/img/images/6.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 6"/>
-                            <img src="static/img/images/7.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 7"/>
-                            <img src="static/img/images/8.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 8"/>
-                            <img src="static/img/images/9.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 9"/>
-                            <img src="static/img/images/10.png" class="img-rounded"
-                                 v-if="item.msgUser.userImg === 10"/>
+                        <div class="avatar">
+                            <img :src="item.msgUser.avatar" class="img-rounded"/>
                         </div>
-                        <div class="">
+                        <div class="text-box">
                             <div class="user-left">{{ item.msgUser.username }}</div>
-                            <div class="text-left"><span class="horn">◀</span>{{ item.msg }}</div>
+                            <div class="text-left"><span class="horn">◀</span><span class="text">{{ item.msg }}</span>
+                            </div>
                         </div>
                         <br style="clear: both;"/>
                     </div>
                     <div v-if="item.type === 3" class="row row-right">
                         <div class="avater">
-                            <img src="static/img/images/1.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 1"/>
-                            <img src="static/img/images/2.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 2"/>
-                            <img src="static/img/images/3.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 3"/>
-                            <img src="static/img/images/4.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 4"/>
-                            <img src="static/img/images/5.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 5"/>
-                            <img src="static/img/images/6.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 6"/>
-                            <img src="static/img/images/7.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 7"/>
-                            <img src="static/img/images/8.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 8"/>
-                            <img src="static/img/images/9.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 9"/>
-                            <img src="static/img/images/10.png" class="img-rounded"
-                                 v-if="userInfo.userImg === 10"/>
+                            <img :src="avatar" class="img-rounded">
                         </div>
                         <div class="text-box">
                             <div class="user-right">{{ item.msgUser.username }}</div>
-                            <div class="text-right"><span class="text">{{ item.msg }}</span><span class="horn">▶</span></div>
+                            <div class="text-right"><span class="text">{{ item.msg }}</span><span class="horn">▶</span>
+                            </div>
                         </div>
                         <br style="clear: both;"/>
                     </div>
@@ -75,13 +39,13 @@
                             <div class="col-ms-6 col-lg-11">
                                 <input type="text" class="form-control" id="name"
                                        placeholder="Enter your message"
-                                       v-model="inputValue" @keyup.enter="sendEvent" v-show="connectState">
+                                       v-model="inputValue" @keyup.enter="send" v-show="connectState">
                                 <input type="text" class="input" disabled v-show="!connectState"
                                        v-model="inputValue"/>
                             </div>
                             <div class="col-ms-6 col-lg-1">
                                 <button class="btn btn-info" :class="{logout: !connectState}"
-                                        @click="sendEvent">
+                                        @click="send">
                                     发送
                                 </button>
                             </div>
@@ -135,12 +99,12 @@
         justify-content: flex-start;
     }
 
-    .avater img {
+    .avatar img {
         max-width: 40px;
         max-height: 40px;
     }
 
-    .tip{
+    .tip {
         padding: 3px 6px;
         margin: 2px 3px;
         border-radius: 2px;
@@ -150,7 +114,7 @@
         line-height: 12px;
     }
 
-    .text{
+    .text {
         background: #39b2d5;
         margin-left: -2px;
         margin-right: -2px;
@@ -158,7 +122,6 @@
     }
 
     .text-left {
-        font-size: 0;
         color: #fff;
     }
 
@@ -190,35 +153,43 @@
         line-height: 12px;
     }
 
-    .text-box{
+    .text-box {
         max-width: 100%;
         display: block;
+    }
+
+    .img-rounded {
+        width: 40px;
+        height: 40px;
     }
 </style>
 
 <script>
     /* eslint-disable no-new */
     import { mapGetters } from 'vuex'
+    import io from 'socket.io-client'
+
+    import api from '../api'
 
     export default {
         name: 'chatting-room',
         components: {},
         data () {
             return {
-                userInfo: {},
-                onlineUserList: [],
+                onlineUserList: {},
                 messageList: [],
                 inputValue: '',
-                connectState: false
+                connectState: false,
+                chat_socket: null
             }
         },
         created () {
-            this.userInfo = {}
             this.messageList = []
             /* type = 1 提示信息     type = 2 对方内容     type = 3 我发送内容 */
         },
         computed: {
             ...mapGetters([
+                'user_id',
                 'username',
                 'avatar'
             ])
@@ -226,83 +197,102 @@
         updated () {
             this.scroll()
         },
-        sockets: {
-            login: function (obj) {
-                console.log(obj)
-                this.onlineUserList = obj.onlineUserList
-                this.messageList.push({type: 1, msg: '用户 ' + obj.msgUser.username + ' 加入聊天', msgUser: obj.msgUser})
-            },
-            loginSuccess: function (obj) { /* 1 成功 */
-                if (obj.sign === 1) {
-                    this.onlineUserList = obj.onlineUserList
-                    this.connectState = true
-                    /* 登录状态 */
-                    this.headerConfig.left = this.userInfo.userImg.toString()
-                    console.log('连接!')
-                }
-            },
-            logout: function (obj) {
-                this.messageList.push({type: 1, msg: '用户 ' + obj.msgUser.username + ' 退出聊天', msgUser: obj.msgUser})
-            },
-            message: function (obj) {
-                console.log(obj)
-                this.onlineUserList = obj.onlineUserList
-                this.messageList.push({type: 2, msg: obj.msg, msgUser: obj.user})
-            }
-        },
         methods: {
-            connectEvent () {
-                this.userInfo = {
-                    username: this.username,
-                    userImg: this.avatar
-                }
-                this.$socket.emit('login', this.userInfo)
-                this.onlineUserList.push(this.userInfo)
+            join () {
+                this.chat_socket.emit('join', this.user_id)
             },
-            unConnectEvent () {
-
-            },
-            configEvent () {
-                console.log('聊天室设置触发事件')
-            },
-            loginEvent () {
-                console.log('加入聊天室事件')
-                console.log(this.connectState)
-                if (!this.connectState) {
-                    this.$refs.confirm.modelOpen()
-                }
-            },
-            headCenterEvent () {
-                if (this.connectState) {
-                    console.log('弹出群组全部成员弹窗事件')
-                    this.$refs.pop.modelOpen()
-                    console.log(this.onlineUserList)
-                }
-            },
-            alertBtnEvent () {
-                console.log('alert弹窗确认事件')
-            },
-            sendEvent () {
-                this.inputValue = this.trim(this.inputValue)
-                if (this.inputValue.length > 0) {
-                    if (this.connectState) {
-                        this.$socket.emit('message', {msg: this.inputValue, user: this.userInfo})
-                        this.messageList.push({type: 3, msg: this.inputValue, msgUser: this.userInfo})
-                        this.inputValue = ''
-                    }
+            send () {
+                console.log('he')
+                this.message = this.trim(this.inputValue)
+                if (this.message.length > 0) {
+                    this.chat_socket.emit('msg', this.message)
+                    this.inputValue = ''
                 }
             },
             trim (s) {
                 return s.replace(/(^\s*)|(\s*$)/g, '')
             },
-            confirmBtnEvent (num) {
-                if (num === 1) {
-                    this.connectEvent()
-                }
-            },
             scroll () {
                 this.$refs.scroll.scrollTop = this.$refs.scroll.scrollHeight
+            },
+            pushUsers (userID) {
+                let otherUserAvatar = 0
+                let otherUserUsername = ''
+                api.getOtherUserInfo({id: userID}).then(response => {
+                    otherUserAvatar = '/static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
+                    otherUserUsername = response.data['username']
+                    this.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
+                }).catch(error => console.log(error))
+            },
+            popUsers (userID) {
+                delete this.onlineUserList[userID]
+            },
+            joined (userID) {
+                return new Promise((resolve, reject) => {
+                    let otherUserAvatar = 0
+                    let otherUserUsername = ''
+                    api.getOtherUserInfo({id: userID}).then(response => {
+                        otherUserAvatar = '/static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
+                        otherUserUsername = response.data['username']
+                        this.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
+                        resolve(response)
+                    }).catch(error => {
+                        console.log(error.response)
+                        reject(error)
+                    })
+                })
+            },
+            putMessage (username, avatar, msg, type) {
+                this.messageList.push({
+                    type: type,
+                    msg: msg,
+                    msgUser: {
+                        username: username, avatar: avatar
+                    }
+                })
             }
+        },
+        mounted () {
+            this.chat_socket = io(api.baseURL + '/chat')
+            this.join()
+            this.connectState = true
+            let self = this
+            this.chat_socket.on('left', function (userID) {
+                self.messageList.push({
+                    type: 1,
+                    msg: '用户 ' + self.onlineUserList[userID]._username + ' 退出聊天',
+                    msgUser: null
+                })
+                delete self.onlineUserList[userID]
+            })
+            this.chat_socket.on('joined', function (userID) {
+                console.log('join: ' + userID)
+                let otherUserAvatar = 0
+                let otherUserUsername = ''
+                api.getOtherUserInfo({id: userID}).then(response => {
+                    otherUserAvatar = '/static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
+                    otherUserUsername = response.data['username']
+                    self.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
+                    self.messageList.push({type: 1, msg: '用户 ' + otherUserUsername + ' 加入聊天', msgUser: null})
+                }).catch(error => console.log(error))
+            })
+            this.chat_socket.on('msg received', function (obj) {
+                let userID = obj.userID
+                let msg = obj.msg
+                let user = self.onlineUserList[userID]
+                if (user === undefined) {
+                    self.joined(userID).then(() => {
+                        user = self.onlineUserList[userID]
+                        self.putMessage(user._username, user._avatar, msg, 2)
+                    })
+                } else {
+                    if (userID === self.user_id) {
+                        self.putMessage(self.username, self.avatar, msg, 3)
+                    } else {
+                        self.putMessage(user._username, user._avatar, msg, 2)
+                    }
+                }
+            })
         }
     }
 </script>

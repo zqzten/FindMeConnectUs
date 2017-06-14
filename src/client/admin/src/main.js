@@ -4,15 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/store'
-
 import VueSocketio from 'vue-socket.io'
-import VueLocalStorage from 'vue-localstorage'
-
 import iView from 'iview'
+import api from './api'
 
-Vue.use(VueSocketio, 'http://fmcu.eastasia.cloudapp.azure.com:3000/room')
+Vue.use(VueSocketio, api.baseURL + '/room')
 Vue.use(iView)
-Vue.use(VueLocalStorage)
 
 /* eslint-disable no-new */
 const whiteList = ['/pages/Login', '/pages/Register', '/pages/Page404', '/pages/Page500']

@@ -39,6 +39,14 @@
             list () {
                 return this.$route.matched
             }
+        },
+        methods: {
+            error (message) {
+                this.$Message.error(message)
+            },
+            success (message) {
+                this.$Message.success(message)
+            }
         }
     }
 </script>

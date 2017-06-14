@@ -1,10 +1,11 @@
 <template>
     <div class="background">
+        <audio src="/static/music/ui_main.mp3" preload="auto" id="music" loop="loop"></audio>
         <div class="wrap">
             <Row>
                 <i-col span="4" class="leave-button">
                     <Button type="error" @click="leave" class="pad" size="large" long>
-                        <span>离开房间</span>
+                        <span>放回大厅</span>
                     </Button>
                 </i-col>
                 <i-col span="8" offset="3" class="center" v-if="gameStatus === 0">
@@ -21,19 +22,16 @@
                     <Card :bordered=false class="card-r" :padding="10">
                         <Input v-model="room" size="large" placeholder="请输入房间号" class="pad-sure"></Input>
                         <Tooltip content="地图长宽" placement="left" class="center-left" v-if="gameStatus === 1">
-                            <Row class="full">
-                                <i-col span="8">
                                     <Input-number :max="10" :min="4" v-model="mapLength" size="large"
                                                   class="input-number"></Input-number>
-                                </i-col>
-                                <i-col span="8">
                                     <Input-number :max="10" :min="4" v-model="mapWidth" size="large"
-                                                  class="input-number input-right"></Input-number>
-                                </i-col>
-                            </Row>
+                                                  class="input-number"></Input-number>
                         </Tooltip>
-                        <Button type="info" @click="submit" class="pad-sure" size="large">
+                        <Button type="info" @click="submit" class="pad-sure" size="large" v-if="!loading">
                             <span>确认</span>
+                        </Button>
+                        <Button type="info" loading class="pad-sure" size="large" v-else>
+                            <span>请求发送中</span>
                         </Button>
                         <Button type="info" @click="cancel" class="pad-cancel" size="large">
                             <span>取消</span>
@@ -71,6 +69,7 @@
     import api from '../api'
     import router from '../router'
     import Vue from 'vue'
+    import Cookie from 'js-cookie'
 
     export default {
         name: 'room',
@@ -82,7 +81,8 @@
                 mapWidth: 4,
                 users: [],
                 gameID: -1,
-                gameLink: ''
+                gameLink: '',
+                loading: false
             }
         },
         computed: {
@@ -110,11 +110,11 @@
             },
             'game start': function (gameID) {
                 console.log('game start')
-                Vue.localStorage.set('gameID', gameID)
-                Vue.localStorage.set('userID', this.user_id)
+                Cookie.set('userID', this.user_id)
+                Cookie.set('gameID', gameID)
                 this.gameID = gameID
                 this.gameStatus = 5
-                this.gameLink = 'http://fmcu.eastasia.cloudapp.azure.com:3000/game'
+                this.gameLink = 'http://localhost:8080/main.html' // gameLink can be replaced by the true link
                 window.location.href = this.gameLink
                 window.location.replace(this.gameLink)
             }
@@ -127,6 +127,7 @@
                 this.gameStatus = 2
             },
             submit () {
+                this.loading = true
                 if (this.gameStatus === 1) {
                     this.create()
                 } else if (this.gameStatus === 2) {
@@ -145,10 +146,12 @@
                 , function (success) {
                     if (!success) {
                         console.log('error')
+                        room.error('房间已经存在')
                     } else {
                         room.users.push({_id: room.user_id, _avatar: room.avatar, _isReady: false, _username: room.username})
                         room.gameStatus = 3
                     }
+                    room.loading = false
                 })
             },
             join () {
@@ -166,11 +169,12 @@
                     } else {
                         console.log('error')
                         if (users === 'room_not_exist') {
-                            this.error('房间不存在')
+                            room.error('房间不存在')
                         } else if (users === 'room_full') {
-                            this.error('房间已满')
+                            room.error('房间已满')
                         }
                     }
+                    room.loading = false
                 })
             },
             leave () {
@@ -181,11 +185,16 @@
                 this.$socket.emit('ready')
                 this.gameStatus = 4
                 this.makeReady(this.user_id, true)
+                let audio = document.getElementById('music')
+                audio.play()
             },
             notReady () {
                 this.$socket.emit('not ready')
                 this.gameStatus = 3
                 this.makeReady(this.user_id, false)
+                let audio = document.getElementById('music')
+                audio.pause()
+                audio.currentTime = 0
             },
             pushUsers (userID, isReady) {
                 let otherUserAvatar = 0
@@ -218,7 +227,7 @@
                 this.gameStatus = 0
             },
             startGame () {
-                this.gameLink = 'http://fmcu.eastasia.cloudapp.azure.com:3000/game'
+                this.gameLink = api.baseURL + '/game'
                 window.location.href = this.gameLink
                 window.location.replace(this.gameLink)
             },
@@ -232,10 +241,18 @@
             },
             error (error) {
                 this.$Message.error(error)
+            },
+            success (message) {
+                this.$Message.success(message)
             }
         },
         mounted () {
             this.online()
+        },
+        created () {
+            this.$Message.config({
+                top: 64
+            })
         }
     }
 </script>
@@ -285,7 +302,7 @@
     }
 
     .input-number {
-        width: 95%;
+        width: 49%;
     }
 
     .card-r {
@@ -294,7 +311,7 @@
 
     .center-left {
         margin: 0 20%;
-        width: 150%;
+        width: 60%;
     }
 
     .leave-button {
