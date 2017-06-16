@@ -20,7 +20,7 @@
                         </div>
                         <div class="text-box">
                             <div class="user-right">{{ item.msgUser.username }}</div>
-                            <div class="text-right"><span class="text">{{ item.msg }}</span><span class="horn">▶</span>
+                            <div class="text-right"><span class="text-me">{{ item.msg }}</span><span class="horn-me">▶</span>
                             </div>
                         </div>
                         <br style="clear: both;"/>
@@ -118,7 +118,14 @@
         background: #39b2d5;
         margin-left: -2px;
         margin-right: -2px;
-        padding: 4px;
+        padding: 6px;
+    }
+
+    .text-me {
+        background: #1dd500;
+        margin-left: -2px;
+        margin-right: -2px;
+        padding: 6px;
     }
 
     .text-left {
@@ -132,6 +139,11 @@
 
     .horn {
         color: #39b2d5;
+        margin: 0;
+    }
+
+    .horn-me {
+        color: #1dd500;
         margin: 0;
     }
 
@@ -202,7 +214,6 @@
                 this.chat_socket.emit('join', this.user_id)
             },
             send () {
-                console.log('he')
                 this.message = this.trim(this.inputValue)
                 if (this.message.length > 0) {
                     this.chat_socket.emit('msg', this.message)
@@ -213,13 +224,13 @@
                 return s.replace(/(^\s*)|(\s*$)/g, '')
             },
             scroll () {
-                this.$refs.scroll.scrollTop = this.$refs.scroll.scrollHeight
+                this.$refs.scroll.scrollTop = this.$refs.scrollHeight
             },
             pushUsers (userID) {
                 let otherUserAvatar = 0
                 let otherUserUsername = ''
                 api.getOtherUserInfo({id: userID}).then(response => {
-                    otherUserAvatar = '/static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
+                    otherUserAvatar = '/static/img/avatars/' + response.data['avatarID'] + '.jpg'
                     otherUserUsername = response.data['username']
                     this.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
                 }).catch(error => console.log(error))
@@ -270,7 +281,7 @@
                 let otherUserAvatar = 0
                 let otherUserUsername = ''
                 api.getOtherUserInfo({id: userID}).then(response => {
-                    otherUserAvatar = '/static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
+                    otherUserAvatar = '/static/img/avatars/' + response.data['avatarID'] + '.jpg'
                     otherUserUsername = response.data['username']
                     self.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
                     self.messageList.push({type: 1, msg: '用户 ' + otherUserUsername + ' 加入聊天', msgUser: null})

@@ -4,9 +4,10 @@
 import axios from 'axios'
 
 const baseURL = 'http://fmcu.eastasia.cloudapp.azure.com:3000'
+const baseWeb = 'http://fmcu.eastasia.cloudapp.azure.com'
 
 axios.defaults.timeout = 10000
-axios.defaults.baseURL = '' // baseURL
+axios.defaults.baseURL = baseURL // baseURL
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -64,5 +65,6 @@ export default {
     getUserInfo,
     getOtherUserInfo,
     getRecords,
-    baseURL
+    baseURL,
+    baseWeb
 }

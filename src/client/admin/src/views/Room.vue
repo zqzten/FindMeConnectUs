@@ -1,11 +1,11 @@
 <template>
     <div class="background">
-        <audio src="/static/music/ui_main.mp3" preload="auto" id="music" loop="loop"></audio>
+        <audio src="/static/music/ui_wait.mp3" preload="auto" id="music" loop="loop"></audio>
         <div class="wrap">
             <Row>
                 <i-col span="4" class="leave-button">
                     <Button type="error" @click="leave" class="pad" size="large" long>
-                        <span>放回大厅</span>
+                        <span>返回大厅</span>
                     </Button>
                 </i-col>
                 <i-col span="8" offset="3" class="center" v-if="gameStatus === 0">
@@ -114,7 +114,7 @@
                 Cookie.set('gameID', gameID)
                 this.gameID = gameID
                 this.gameStatus = 5
-                this.gameLink = 'http://localhost:8080/main.html' // gameLink can be replaced by the true link
+                this.gameLink = api.baseWeb + '/main/' // gameLink can be replaced by the true link
                 window.location.href = this.gameLink
                 window.location.replace(this.gameLink)
             }
@@ -227,7 +227,7 @@
                 this.gameStatus = 0
             },
             startGame () {
-                this.gameLink = api.baseURL + '/game'
+                this.gameLink = api.baseWeb + '/main/'
                 window.location.href = this.gameLink
                 window.location.replace(this.gameLink)
             },
