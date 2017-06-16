@@ -3,8 +3,8 @@
  */
 import axios from 'axios'
 
-const baseURL = 'http://fmcu.eastasia.cloudapp.azure.com:3000'
-const baseWeb = 'http://fmcu.eastasia.cloudapp.azure.com'
+const baseURL = 'localhost:3000'
+const baseWeb = 'localhost:3000'
 
 axios.defaults.timeout = 10000
 axios.defaults.baseURL = baseURL // baseURL
