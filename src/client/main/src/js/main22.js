@@ -1,8 +1,8 @@
 // import assets
 
-import skyTextureImage from "../ui/sky.jpg";
-import floorTextureImage from "../ui/wood.jpg";
-import wallTextureImage from "../ui/metal.jpg";
+import skyTextureImage from "../../assets/images/sky.jpg";
+import floorTextureImage from "../../assets/images/wood.jpg";
+import wallTextureImage from "../../assets/images/metal.jpg";
 import ui_hint_normal  from "../ui/hint-normal.png";
 import ui_hint_hover from "../ui/hint-hover.png";
 import ui_hint_paper from "../ui/hint-paper.png";
@@ -10,7 +10,7 @@ import ui_voteInv from "../ui/voteInv.png";
 import doorTextureImage from "../ui/door.jpg";
 import $ from "jquery";
 import * as io from "socket.io-client";
-import music from "../music/ui_main.mp3";
+import music from "../ui/bgm.mp3";
 
 import ui_loading from "../ui/loading.jpg";
 import player1_tex from "../models/playermodel/Tex_0018_0.png";
@@ -30,6 +30,9 @@ import { DOOR_SIZE, Door } from "./door";
 import { KineticControl } from "./kinetic_control";
 import { GameControl } from "./gameControl";
 import { Craft } from "./craft";
+// import "../models/playermodel/MTLLoader";
+// import "../models/playermodel/OBJLoader";
+// import "../models/playermodel/DDSLoader";
 
 
 // init URL
@@ -51,9 +54,6 @@ function getCookie(name)
 		return null;
 }
 
-function getAvatarId() {
-	return getCookie("avatarID");
-}
 //temporary get
 function getPlayerId() {
 	return getCookie("userID");
@@ -151,60 +151,24 @@ let skyTexture = textureLoader.load(skyTextureImage);
 let skyMaterial = new THREE.MeshBasicMaterial({ map: skyTexture, side: THREE.BackSide });
 
 let currentPlayerModel = new THREE.Mesh(new THREE.BoxGeometry(1, 4, 1), new THREE.MeshPhongMaterial({ color:0xffffff }));
-let otherPlayerModel = new THREE.Mesh(new THREE.BoxGeometry(1, 4, 1), new THREE.MeshPhongMaterial({ color:0xffffff }));
-// let objloader = new THREE.ObjectLoader();
-// let onProgress = function ( xhr ) {
+let otherPlayerModel;
+let objloader = new THREE.ObjectLoader();
+let onProgress = function ( xhr ) {
 				
-// };
-// let onError = function ( xhr ) { };
-// objloader.setTexturePath(player1_tex);
-// objloader.load(player1_model,function( object ) {
-					
-//         //         if(child instanceof THREE.Mesh) {
-//         //             su.craft = new Craft(num,"ball",craftPic[num],child,true);
-//         //      // su.craft = object;
-//         //              su.craft.model.scale.set(0.01,0.01,0.01);
-//         //       //su.craft = new THREE.Mesh(geo,material);
-//         //              su.craft.model.position.x = su.origin.x + ROOM_SIZE / 2;
-//         //              su.craft.model.position.z = su.origin.z + ROOM_SIZE / 2;
-//         //              su.craft.model.position.y = 1;
-//         //              su.craft.model.craft = su.craft;
-//         //              control.setCraft(su.craft);
-//         //       //scene.add(su.craft.model);
-//         //              console.log("addi n");
-//         //         }
-// 	//currentPlayerModel=object;
-// 	object.traverse(function(child) {
-//         if(child instanceof THREE.Mesh) {
-//         	otherPlayerModel = child;
-//         	otherPlayerModel.scale.set(0.3,0.3,0.3);
-//         	otherPlayerModel.position.y = 3;
-//         	otherPlayerModel.ro
-//         }
-//     });
-// }, onProgress, onError );
-
-// let objloader = new THREE.ObjectLoader();
-// let onProgress = function ( xhr ) {
-				
-// };
-// let onError = function ( xhr ) { };
-// objloader.setTexturePath(player1_tex);
-// objloader.load(player1_model,function( object ) {
+};
+let onError = function ( xhr ) { };
+objloader.setTexturePath(player1_tex);
+objloader.load(player1_model,function( object ) {
 						
-// 	//currentPlayerModel=object;
-// 	object.traverse(function(child) {
-//         if(child instanceof THREE.Mesh) {
-//         	currentPlayerModel = child;
-//         	console.log(currentPlayerModel);
-//         }
-//     });
-// }, onProgress, onError );
+	//currentPlayerModel=object;
+	object.traverse(function(child) {
+        if(child instanceof THREE.Mesh) {
+        	otherPlayerModel = child;
+        }
+    });
+}, onProgress, onError );
 
-
-
-
-
+//let currentPlayerModel = new THREE.Mesh(new THREE.BoxGeometry(1, 4, 1), new THREE.MeshPhongMaterial({ color:0xffffff }));
 //currentPlayerModel.visible = false;
 
 // make sky
@@ -309,9 +273,6 @@ function init() {
 			let dId = 0;
 			for(let door of doors) {
 				door.setID(dId);
-				if((door.row == 0 && door.direction == 0) || (door.row == rowCount - 1 && door.direction == 1) || (door.column == 0 && door.direction == 2) || (door.row == columnCount - 1 && door.direction == 3)) {
-					door.enable = false;
-				}
 				door.model.craft = new Craft(DOOR_ID,"door",doorTextureImage,door,false);
 				door.model.craft.setDoor(door);
 				++dId;

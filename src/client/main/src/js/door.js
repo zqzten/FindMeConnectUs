@@ -9,5 +9,16 @@ export class Door {
 		this.direction = direction;
 		this.enable = true;
 		this.model = doorModel;
+		this.open = false;
+	}
+
+	setID(id) {
+		this.id = id;
+	}
+	openIt() {
+		this.open = true;
+	}
+	closeIt() {
+		this.open = false;
 	}
 }

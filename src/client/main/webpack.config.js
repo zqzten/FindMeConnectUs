@@ -9,14 +9,14 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.(jpe?g|png|svg|woff2?|eot|ttf|otf|json)$/, use: "file-loader?name=[path][name].[ext]" },
+            { test: /\.(jpe?g|png|svg|woff2?|eot|ttf|otf|json|mp3)$/, use: "file-loader?name=[path][name].[ext]" },
             { test: /\.css$/, use: ["style-loader", "css-loader"] }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: "main.html",
-            template: "./src/main.html"
+            filename: "index.html",
+            template: "./src/index.html"
         })
     ],
     devServer: {

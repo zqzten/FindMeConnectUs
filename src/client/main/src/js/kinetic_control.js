@@ -8,7 +8,7 @@ export class KineticControl {
         this.domElement = domElement;
         this.enable = true;
         this.moveSpeed = 10;
-        this.lookSpeed = 0.1;
+        this.lookSpeed = 0.2;
         this.lockAxisY = false;
         this.enableLook = true;
         this.angleLock = 80;
@@ -28,7 +28,6 @@ export class KineticControl {
         this.halfX = this.domElement.offsetWidth / 2;
         this.halfY = this.domElement.offsetHeight / 2;
         this.pickMouse = new THREE.Vector2();
-
        
     }
 
@@ -77,17 +76,26 @@ export class KineticControl {
                     if (craft.isDoor) {
                         console.log("success");
                         //fObj.position.y -= (WALL_HEIGHT * 2);
-                        let timer = setInterval( () => this.openTheDoor(timer,fObj),25);
+                        if(craft.door.enable) {
+                            craft.door.openIt();
+                            this.control.showNote("该门已经被打开")
+                            this.player.keyNum--;
+                            this.control.socket.emit("unlock",craft.door.id);
+                        }
+                        else {
+                            this.control.showNote("此门是边界 无法打开");
+                        }
+                      //  let timer = setInterval( () => this.openTheDoor(timer,fObj),25);
                     }
                     else {
-                        console.log("lose cauz' it's not a door");
+                        this.control.showNote("你未选择一扇门");
                     }
                     this.player.isKeyCondition = false;
                 }
                 else {
                     if(this.player.isVoteCondition) {
                         if(craft.pickable) {
-                            this.control.changeVote(this.player.index,craft);
+                            this.control.changeInv(this.control.ui_voteCraft[this.player.index].name,craft.name,true,this.player.id);
 
                         }
                     }
@@ -101,7 +109,9 @@ export class KineticControl {
 
     openTheDoor(timer,obj) {
         obj.position.y -= 0.5;
-        if(obj.position.y <= -WALL_HEIGHT * 1.5) clearInterval(timer);
+        if(obj.position.y <= -WALL_HEIGHT * 1.5) {
+            clearInterval(timer);
+        }
     }
 
     testForCollision(model, dx, dy, dz) {
