@@ -62,5 +62,8 @@ typings/
 # Distribution files
 dist/
 
+### Database config file ###
+/src/server/config.js
+
 ### Other ###
 .DS_Store
