@@ -11,8 +11,9 @@ export class Craft{
 		this.pickable = pickable;
 	}
 
-	setDoor() {
+	setDoor(door) {
 		this.isDoor = true;
+		this.door = door;
 		this.pickable = false;
 	}
 	clone() {
