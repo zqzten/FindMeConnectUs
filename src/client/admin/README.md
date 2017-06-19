@@ -1,7 +1,7 @@
 # FMCUClient - Admin
-这是 FindMeConnectUs 前端的个人管理部分。
+This is the admin part of the client part of FindMeConnectUs.
 
-## 文件目录
+## Catalog
 * `build` webpack 相关配置文件目录
     * `build.js` 生产环境结构代码
     * `check-version.js` 检查 node、npm 等版本
@@ -29,7 +29,12 @@
 * `index.html` 入口文件
 * `package.json` npm 配置文件
 
-## 构建命令
+## Setup
+
+### Prerequisites
+* Node.js v8.0.0 with npm v5.0.0
+
+### Commands
 ```shell
 # install dependencies
 npm install
