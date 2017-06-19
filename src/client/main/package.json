@@ -21,7 +21,8 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "three": "^0.85.2",
-    "three-trackballcontrols": "0.0.5"
+    "jquery": "^3.2.1",
+    "socket.io": "^2.0.3",
+    "three": "^0.85.2"
   }
 }

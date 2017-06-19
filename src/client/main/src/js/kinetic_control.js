@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {WALL_HEIGHT} from "../js/room";
+import {WALL_HEIGHT} from "./room";
 
 export class KineticControl {
     constructor(domElement) {

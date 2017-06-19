@@ -1,39 +1,36 @@
 // import assets
 
-import skyTextureImage from "../ui/sky.jpg";
-import floorTextureImage from "../ui/wood.jpg";
-import wallTextureImage from "../ui/metal.jpg";
-import ui_hint_normal  from "../ui/hint-normal.png";
-import ui_hint_hover from "../ui/hint-hover.png";
-import ui_hint_paper from "../ui/hint-paper.png";
-import ui_voteInv from "../ui/voteInv.png";
-import doorTextureImage from "../ui/door.jpg";
-import $ from "jquery";
-import * as io from "socket.io-client";
-import music from "../music/ui_main.mp3";
-
-import ui_loading from "../ui/loading.jpg";
-import player1_tex from "../models/playermodel/Tex_0018_0.png";
-import player1_model from "../models/playermodel/subway.json";
+import skyTextureImage from "../../assets/ui/sky.jpg";
+import floorTextureImage from "../../assets/ui/wood.jpg";
+import wallTextureImage from "../../assets/ui/metal.jpg";
+import ui_hint_normal  from "../../assets/ui/hint-normal.png";
+import ui_hint_hover from "../../assets/ui/hint-hover.png";
+import ui_hint_paper from "../../assets/ui/hint-paper.png";
+import ui_voteInv from "../../assets/ui/voteInv.png";
+import doorTextureImage from "../../assets/ui/door.jpg";
+import music from "../../assets/music/ui_main.mp3";
+import ui_loading from "../../assets/ui/loading.jpg";
+import player1_tex from "../../assets/models/playermodel/Tex_0018_0.png";
+import player1_model from "../../assets/models/playermodel/subway.json";
 
 // import css
 import "../css/main.css";
 
 // import js
 import * as THREE from "three";
-// import * as TrackballControls from "three-trackballcontrols";
+import $ from "jquery";
+import * as io from "socket.io-client";
 
-//import * from "./OrbitContr
 import { WALL_SIZE, ROOM_SIZE, WALL_HEIGHT, WALL_THICKNESS, Room } from "./room";
 import { Player } from "./player";
 import { DOOR_SIZE, Door } from "./door";
 import { KineticControl } from "./kinetic_control";
-import { GameControl } from "./gameControl";
+import { GameControl } from "./game_control";
 import { Craft } from "./craft";
 
 
 // init URL
-const baseURL = "http://fmcu.eastasia.cloudapp.azure.com:3000/game";
+const baseURL = "localhost:3000/game";
 
 
 // init craftID
@@ -232,7 +229,6 @@ window.addEventListener("resize", function () {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    // trackballControls.handleResize();
     render();
 });
 
@@ -293,8 +289,6 @@ function init() {
 		worldWidth = ROOM_SIZE * columnCount;
 		worldHeight = ROOM_SIZE * rowCount;
 		roomModel = matrix;
-		//sky.position.set(worldWidth / 2, 0, worldHeight / 2);
-		//camera.position.set(0, 50, 0);
 		players = getPlayers(users,otherPlayerModel,rowCount,columnCount);
 		console.log(users);
 		console.log(players);
@@ -324,7 +318,7 @@ function init() {
 		 	loadWarningFinish[3].innerHTML = "☑";
 		 	testForFinish();
 		}
-//
+
 		let callCreatePlayers = function() {
 			for(let i in players) {
 				if(players[i].id == currentPlayerId) {
