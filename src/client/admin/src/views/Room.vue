@@ -1,6 +1,6 @@
 <template>
     <div class="background">
-        <audio src="/static/music/ui_wait.mp3" preload="auto" id="music" loop="loop"></audio>
+        <audio src="static/music/ui_wait.mp3" preload="auto" id="music" loop="loop"></audio>
         <div class="wrap">
             <Row>
                 <i-col span="4" class="leave-button">
@@ -200,7 +200,7 @@
                 let otherUserAvatar = 0
                 let otherUserUsername = ''
                 api.getOtherUserInfo({id: userID}).then(response => {
-                    otherUserAvatar = '/static/img/avatars/' + response.data['avatarID'] + '.jpg'
+                    otherUserAvatar = './static/img/avatars/' + response.data['avatarID'] + '.jpg'
                     otherUserUsername = response.data['username']
                     this.users.push({_id: userID, _avatar: otherUserAvatar, _isReady: isReady, _username: otherUserUsername})
                 }).catch(error => console.log(error))
@@ -271,7 +271,7 @@
         margin-left: -30px;
         margin-top: -25px;
 
-        background: url("/static/img/background/6.jpg") no-repeat bottom center scroll;
+        background: url("../../static/img/background/6.jpg") no-repeat bottom center scroll;
         background-color: black;
         -webkit-background-size: cover;
         -moz-background-size: cover;

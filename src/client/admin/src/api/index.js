@@ -4,7 +4,7 @@
 import axios from 'axios'
 
 const baseURL = 'localhost:3000'
-const baseWeb = 'localhost:3000'
+const baseWeb = 'localhost'
 
 axios.defaults.timeout = 10000
 axios.defaults.baseURL = baseURL // baseURL

@@ -7,7 +7,7 @@ const user = {
         token: Cookies.get('token'),
         user_id: '-1',
         username: '',
-        avatar: '/static/img/avatars/0.jpg',
+        avatar: 'static/img/avatars/0.jpg',
         registered_date: '2017/04/08',
         games: '0',
         signature: '',
@@ -22,7 +22,7 @@ const user = {
             state.username = username
         },
         SET_AVATAR: (state, avatar) => {
-            state.avatar = '/static/img/avatars/' + avatar + '.jpg'
+            state.avatar = 'static/img/avatars/' + avatar + '.jpg'
         },
         SET_DATE: (state, date) => {
             console.log(formatDate(date))
@@ -36,7 +36,7 @@ const user = {
             state.signature = signature
         },
         SET_MODEL: (state, model) => {
-            state.model = '/static/models/' + model + '/model.json'
+            state.model = 'static/models/' + model + '/model.json'
         },
         LOGIN_SUCCESS: () => {
             console.log('login success')

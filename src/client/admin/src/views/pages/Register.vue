@@ -32,18 +32,18 @@
                                 <audio :src="url" preload="auto" :id="id"></audio>
                             </template>
                             <!--
-                            <audio src="/static/music/voice/0.mp3" preload="auto" id="v0"></audio>
-                            <audio src="/static/music/voice/1.mp3" preload="auto" id="v1"></audio>
-                            <audio src="/static/music/voice/2.mp3" preload="auto" id="v2"></audio>
-                            <audio src="/static/music/voice/3.mp3" preload="auto" id="v3"></audio>
-                            <audio src="/static/music/voice/4.mp3" preload="auto" id="v4"></audio>
-                            <audio src="/static/music/voice/5.mp3" preload="auto" id="v5"></audio>
-                            <audio src="/static/music/voice/6.mp3" preload="auto" id="v6"></audio>
-                            <audio src="/static/music/voice/7.mp3" preload="auto" id="v7"></audio>
-                            <audio src="/static/music/voice/8.mp3" preload="auto" id="v8"></audio>
-                            <audio src="/static/music/voice/9.mp3" preload="auto" id="v9"></audio>
-                            <audio src="/static/music/voice/10.mp3" preload="auto" id="v10"></audio>
-                            <audio src="/static/music/voice/11.mp3" preload="auto" id="v11"></audio>
+                            <audio src="static/music/voice/0.mp3" preload="auto" id="v0"></audio>
+                            <audio src="static/music/voice/1.mp3" preload="auto" id="v1"></audio>
+                            <audio src="static/music/voice/2.mp3" preload="auto" id="v2"></audio>
+                            <audio src="static/music/voice/3.mp3" preload="auto" id="v3"></audio>
+                            <audio src="static/music/voice/4.mp3" preload="auto" id="v4"></audio>
+                            <audio src="static/music/voice/5.mp3" preload="auto" id="v5"></audio>
+                            <audio src="static/music/voice/6.mp3" preload="auto" id="v6"></audio>
+                            <audio src="static/music/voice/7.mp3" preload="auto" id="v7"></audio>
+                            <audio src="static/music/voice/8.mp3" preload="auto" id="v8"></audio>
+                            <audio src="static/music/voice/9.mp3" preload="auto" id="v9"></audio>
+                            <audio src="static/music/voice/10.mp3" preload="auto" id="v10"></audio>
+                            <audio src="static/music/voice/11.mp3" preload="auto" id="v11"></audio>
                             -->
                             <Radio-group v-model="form.avatarID" @on-change="play_voice">
                                 <Row>
@@ -109,38 +109,38 @@
                     ]
                 },
                 avatars: [
-                    {url: '/static/img/avatars/0.jpg', id: 0},
-                    {url: '/static/img/avatars/1.jpg', id: 1},
-                    {url: '/static/img/avatars/2.jpg', id: 2},
-                    {url: '/static/img/avatars/3.jpg', id: 3},
-                    {url: '/static/img/avatars/4.jpg', id: 4},
-                    {url: '/static/img/avatars/5.jpg', id: 5},
-                    {url: '/static/img/avatars/6.jpg', id: 6},
-                    {url: '/static/img/avatars/7.jpg', id: 7},
-                    {url: '/static/img/avatars/8.jpg', id: 8},
-                    {url: '/static/img/avatars/9.jpg', id: 9},
-                    {url: '/static/img/avatars/10.jpg', id: 10},
-                    {url: '/static/img/avatars/11.jpg', id: 11}
+                    {url: 'static/img/avatars/0.jpg', id: 0},
+                    {url: 'static/img/avatars/1.jpg', id: 1},
+                    {url: 'static/img/avatars/2.jpg', id: 2},
+                    {url: 'static/img/avatars/3.jpg', id: 3},
+                    {url: 'static/img/avatars/4.jpg', id: 4},
+                    {url: 'static/img/avatars/5.jpg', id: 5},
+                    {url: 'static/img/avatars/6.jpg', id: 6},
+                    {url: 'static/img/avatars/7.jpg', id: 7},
+                    {url: 'static/img/avatars/8.jpg', id: 8},
+                    {url: 'static/img/avatars/9.jpg', id: 9},
+                    {url: 'static/img/avatars/10.jpg', id: 10},
+                    {url: 'static/img/avatars/11.jpg', id: 11}
                 ],
                 models: [
-                    {url: '/static/models/0/model.json', id: 0},
-                    {url: '/static/models/1/model.json', id: 1},
-                    {url: '/static/models/2/model.json', id: 2},
-                    {url: '/static/models/3/model.json', id: 3}
+                    {url: 'static/models/0/model.json', id: 0},
+                    {url: 'static/models/1/model.json', id: 1},
+                    {url: 'static/models/2/model.json', id: 2},
+                    {url: 'static/models/3/model.json', id: 3}
                 ],
                 voices: [
-                    {url: '/static/music/voice/0.mp3', id: 'v0'},
-                    {url: '/static/music/voice/1.mp3', id: 'v1'},
-                    {url: '/static/music/voice/2.mp3', id: 'v2'},
-                    {url: '/static/music/voice/3.mp3', id: 'v3'},
-                    {url: '/static/music/voice/4.mp3', id: 'v4'},
-                    {url: '/static/music/voice/5.mp3', id: 'v5'},
-                    {url: '/static/music/voice/6.mp3', id: 'v6'},
-                    {url: '/static/music/voice/7.mp3', id: 'v7'},
-                    {url: '/static/music/voice/8.mp3', id: 'v8'},
-                    {url: '/static/music/voice/9.mp3', id: 'v9'},
-                    {url: '/static/music/voice/10.mp3', id: 'v10'},
-                    {url: '/static/music/voice/11.mp3', id: 'v11'}
+                    {url: 'static/music/voice/0.mp3', id: 'v0'},
+                    {url: 'static/music/voice/1.mp3', id: 'v1'},
+                    {url: 'static/music/voice/2.mp3', id: 'v2'},
+                    {url: 'static/music/voice/3.mp3', id: 'v3'},
+                    {url: 'static/music/voice/4.mp3', id: 'v4'},
+                    {url: 'static/music/voice/5.mp3', id: 'v5'},
+                    {url: 'static/music/voice/6.mp3', id: 'v6'},
+                    {url: 'static/music/voice/7.mp3', id: 'v7'},
+                    {url: 'static/music/voice/8.mp3', id: 'v8'},
+                    {url: 'static/music/voice/9.mp3', id: 'v9'},
+                    {url: 'static/music/voice/10.mp3', id: 'v10'},
+                    {url: 'static/music/voice/11.mp3', id: 'v11'}
                 ],
                 loading: false
             }

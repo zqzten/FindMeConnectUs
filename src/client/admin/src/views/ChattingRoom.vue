@@ -230,7 +230,7 @@
                 let otherUserAvatar = 0
                 let otherUserUsername = ''
                 api.getOtherUserInfo({id: userID}).then(response => {
-                    otherUserAvatar = '/static/img/avatars/' + response.data['avatarID'] + '.jpg'
+                    otherUserAvatar = './static/img/avatars/' + response.data['avatarID'] + '.jpg'
                     otherUserUsername = response.data['username']
                     this.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
                 }).catch(error => console.log(error))
@@ -243,7 +243,7 @@
                     let otherUserAvatar = 0
                     let otherUserUsername = ''
                     api.getOtherUserInfo({id: userID}).then(response => {
-                        otherUserAvatar = '/static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
+                        otherUserAvatar = './static/img/avatars_g/' + response.data['avatarID'] + '.jpg'
                         otherUserUsername = response.data['username']
                         this.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
                         resolve(response)
@@ -281,7 +281,7 @@
                 let otherUserAvatar = 0
                 let otherUserUsername = ''
                 api.getOtherUserInfo({id: userID}).then(response => {
-                    otherUserAvatar = '/static/img/avatars/' + response.data['avatarID'] + '.jpg'
+                    otherUserAvatar = './static/img/avatars/' + response.data['avatarID'] + '.jpg'
                     otherUserUsername = response.data['username']
                     self.onlineUserList[userID] = {_avatar: otherUserAvatar, _username: otherUserUsername}
                     self.messageList.push({type: 1, msg: '用户 ' + otherUserUsername + ' 加入聊天', msgUser: null})
