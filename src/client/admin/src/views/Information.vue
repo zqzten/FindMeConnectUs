@@ -130,9 +130,9 @@
 
     }
 </script>
+
 <style scoped>
     #save {
-
         margin: auto;
         width: 30%;
         height: 100%;
@@ -143,5 +143,4 @@
         width: 160px;
         font-size: 16px;
     }
-
 </style>

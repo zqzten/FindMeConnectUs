@@ -1,6 +1,6 @@
 <template>
     <div class="background">
-        <audio src="static/music/ui_wait.mp3" preload="auto" id="music" loop="loop"></audio>
+        <audio src="static/audio/ui_wait.mp3" preload="auto" id="music" loop="loop"></audio>
         <div class="wrap">
             <Row>
                 <i-col span="4" class="leave-button">

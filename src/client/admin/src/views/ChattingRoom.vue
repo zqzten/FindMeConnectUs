@@ -57,127 +57,7 @@
     </div>
 </template>
 
-<style>
-    .form-group {
-        margin-bottom: 0;
-    }
-
-    .message-list {
-        flex: 1;
-    }
-
-    .message-box {
-        flex: 0 0 60px;
-    }
-
-    .wrap {
-        display: flex;
-        min-height: 54vh;
-        flex-direction: column;
-    }
-
-    footer {
-        height: 80px;
-    }
-
-    .row {
-        margin: 4px 5px;
-    }
-
-    .row-right {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-
-    .row-center {
-        display: flex;
-        justify-content: center;
-    }
-
-    .row-left {
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    .avatar img {
-        max-width: 40px;
-        max-height: 40px;
-    }
-
-    .tip {
-        padding: 3px 6px;
-        margin: 2px 3px;
-        border-radius: 2px;
-        background: rgba(0, 0, 0, 0.2);
-        color: #fff;
-        font-size: 12px;
-        line-height: 12px;
-    }
-
-    .text {
-        background: #39b2d5;
-        margin-left: -2px;
-        margin-right: -2px;
-        padding: 6px;
-    }
-
-    .text-me {
-        background: #1dd500;
-        margin-left: -2px;
-        margin-right: -2px;
-        padding: 6px;
-    }
-
-    .text-left {
-        color: #fff;
-    }
-
-    .text-right {
-        color: #fff;
-        text-align: right;
-    }
-
-    .horn {
-        color: #39b2d5;
-        margin: 0;
-    }
-
-    .horn-me {
-        color: #1dd500;
-        margin: 0;
-    }
-
-    .user-left {
-        text-align: left;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        font-size: 12px;
-        color: #aaa;
-        line-height: 12px;
-    }
-
-    .user-right {
-        text-align: right;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        font-size: 12px;
-        color: #aaa;
-        line-height: 12px;
-    }
-
-    .text-box {
-        max-width: 100%;
-        display: block;
-    }
-
-    .img-rounded {
-        width: 40px;
-        height: 40px;
-    }
-</style>
-
 <script>
-    /* eslint-disable no-new */
     import { mapGetters } from 'vuex'
     import io from 'socket.io-client'
 
@@ -307,3 +187,122 @@
         }
     }
 </script>
+
+<style scoped>
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .message-list {
+        flex: 1;
+    }
+
+    .message-box {
+        flex: 0 0 60px;
+    }
+
+    .wrap {
+        display: flex;
+        min-height: 54vh;
+        flex-direction: column;
+    }
+
+    footer {
+        height: 80px;
+    }
+
+    .row {
+        margin: 4px 5px;
+    }
+
+    .row-right {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .row-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .row-left {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .avatar img {
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    .tip {
+        padding: 3px 6px;
+        margin: 2px 3px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .text {
+        background: #39b2d5;
+        margin-left: -2px;
+        margin-right: -2px;
+        padding: 6px;
+    }
+
+    .text-me {
+        background: #1dd500;
+        margin-left: -2px;
+        margin-right: -2px;
+        padding: 6px;
+    }
+
+    .text-left {
+        color: #fff;
+    }
+
+    .text-right {
+        color: #fff;
+        text-align: right;
+    }
+
+    .horn {
+        color: #39b2d5;
+        margin: 0;
+    }
+
+    .horn-me {
+        color: #1dd500;
+        margin: 0;
+    }
+
+    .user-left {
+        text-align: left;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        font-size: 12px;
+        color: #aaa;
+        line-height: 12px;
+    }
+
+    .user-right {
+        text-align: right;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: #aaa;
+        line-height: 12px;
+    }
+
+    .text-box {
+        max-width: 100%;
+        display: block;
+    }
+
+    .img-rounded {
+        width: 40px;
+        height: 40px;
+    }
+</style>

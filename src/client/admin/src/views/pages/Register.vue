@@ -32,18 +32,18 @@
                                 <audio :src="url" preload="auto" :id="id"></audio>
                             </template>
                             <!--
-                            <audio src="static/music/voice/0.mp3" preload="auto" id="v0"></audio>
-                            <audio src="static/music/voice/1.mp3" preload="auto" id="v1"></audio>
-                            <audio src="static/music/voice/2.mp3" preload="auto" id="v2"></audio>
-                            <audio src="static/music/voice/3.mp3" preload="auto" id="v3"></audio>
-                            <audio src="static/music/voice/4.mp3" preload="auto" id="v4"></audio>
-                            <audio src="static/music/voice/5.mp3" preload="auto" id="v5"></audio>
-                            <audio src="static/music/voice/6.mp3" preload="auto" id="v6"></audio>
-                            <audio src="static/music/voice/7.mp3" preload="auto" id="v7"></audio>
-                            <audio src="static/music/voice/8.mp3" preload="auto" id="v8"></audio>
-                            <audio src="static/music/voice/9.mp3" preload="auto" id="v9"></audio>
-                            <audio src="static/music/voice/10.mp3" preload="auto" id="v10"></audio>
-                            <audio src="static/music/voice/11.mp3" preload="auto" id="v11"></audio>
+                            <audio src="static/audio/voice/0.mp3" preload="auto" id="v0"></audio>
+                            <audio src="static/audio/voice/1.mp3" preload="auto" id="v1"></audio>
+                            <audio src="static/audio/voice/2.mp3" preload="auto" id="v2"></audio>
+                            <audio src="static/audio/voice/3.mp3" preload="auto" id="v3"></audio>
+                            <audio src="static/audio/voice/4.mp3" preload="auto" id="v4"></audio>
+                            <audio src="static/audio/voice/5.mp3" preload="auto" id="v5"></audio>
+                            <audio src="static/audio/voice/6.mp3" preload="auto" id="v6"></audio>
+                            <audio src="static/audio/voice/7.mp3" preload="auto" id="v7"></audio>
+                            <audio src="static/audio/voice/8.mp3" preload="auto" id="v8"></audio>
+                            <audio src="static/audio/voice/9.mp3" preload="auto" id="v9"></audio>
+                            <audio src="static/audio/voice/10.mp3" preload="auto" id="v10"></audio>
+                            <audio src="static/audio/voice/11.mp3" preload="auto" id="v11"></audio>
                             -->
                             <Radio-group v-model="form.avatarID" @on-change="play_voice">
                                 <Row>
@@ -129,18 +129,18 @@
                     {url: 'static/models/3/model.json', id: 3}
                 ],
                 voices: [
-                    {url: 'static/music/voice/0.mp3', id: 'v0'},
-                    {url: 'static/music/voice/1.mp3', id: 'v1'},
-                    {url: 'static/music/voice/2.mp3', id: 'v2'},
-                    {url: 'static/music/voice/3.mp3', id: 'v3'},
-                    {url: 'static/music/voice/4.mp3', id: 'v4'},
-                    {url: 'static/music/voice/5.mp3', id: 'v5'},
-                    {url: 'static/music/voice/6.mp3', id: 'v6'},
-                    {url: 'static/music/voice/7.mp3', id: 'v7'},
-                    {url: 'static/music/voice/8.mp3', id: 'v8'},
-                    {url: 'static/music/voice/9.mp3', id: 'v9'},
-                    {url: 'static/music/voice/10.mp3', id: 'v10'},
-                    {url: 'static/music/voice/11.mp3', id: 'v11'}
+                    {url: 'static/audio/voice/0.mp3', id: 'v0'},
+                    {url: 'static/audio/voice/1.mp3', id: 'v1'},
+                    {url: 'static/audio/voice/2.mp3', id: 'v2'},
+                    {url: 'static/audio/voice/3.mp3', id: 'v3'},
+                    {url: 'static/audio/voice/4.mp3', id: 'v4'},
+                    {url: 'static/audio/voice/5.mp3', id: 'v5'},
+                    {url: 'static/audio/voice/6.mp3', id: 'v6'},
+                    {url: 'static/audio/voice/7.mp3', id: 'v7'},
+                    {url: 'static/audio/voice/8.mp3', id: 'v8'},
+                    {url: 'static/audio/voice/9.mp3', id: 'v9'},
+                    {url: 'static/audio/voice/10.mp3', id: 'v10'},
+                    {url: 'static/audio/voice/11.mp3', id: 'v11'}
                 ],
                 loading: false
             }
@@ -190,8 +190,7 @@
     }
 </script>
 
-
-<style>
+<style scoped>
     .card-box {
         width: 100%;
         margin-top: 5%;

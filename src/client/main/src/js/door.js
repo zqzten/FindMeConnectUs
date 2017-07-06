@@ -15,9 +15,11 @@ export class Door {
 	setID(id) {
 		this.id = id;
 	}
+
 	openIt() {
 		this.open = true;
 	}
+	
 	closeIt() {
 		this.open = false;
 	}

@@ -8,10 +8,10 @@ import VueSocketio from 'vue-socket.io'
 import iView from 'iview'
 import api from './api'
 
+Vue.config.productionTip = false
 Vue.use(VueSocketio, api.baseURL + '/room')
 Vue.use(iView)
 
-/* eslint-disable no-new */
 const whiteList = ['/pages/Login', '/pages/Register', '/pages/Page404', '/pages/Page500']
 router.beforeEach((to, from, next) => {
     if (store.getters.user_id !== '-1') { // 判断是否有token
@@ -60,5 +60,5 @@ new Vue({
     router,
     store,
     template: '<App/>',
-    components: {App}
+    components: { App }
 })

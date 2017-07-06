@@ -26,8 +26,8 @@
         </nav>
     </div>
 </template>
-<script>
 
+<script>
     export default {
         name: 'sidebar',
         methods: {
@@ -39,7 +39,7 @@
     }
 </script>
 
-<style lang="css">
+<style scoped>
     .nav-link {
         cursor: pointer;
     }

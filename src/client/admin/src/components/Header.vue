@@ -41,6 +41,7 @@
         </ul>
     </navbar>
 </template>
+
 <script>
     import navbar from './Navbar'
     import { dropdown } from 'vue-strap'

@@ -2,13 +2,13 @@
   "name": "find-me-connect-us-server",
   "version": "1.0.0",
   "description": "The server part of FindMeConnectUs.",
-  "scripts": {
-    "start": "node app.js"
-  },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/AkikoZ/FindMeConnectUs.git"
+  },
+  "scripts": {
+    "start": "node app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

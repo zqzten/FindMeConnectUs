@@ -7,7 +7,7 @@ const baseURL = 'localhost:3000'
 const baseWeb = 'localhost'
 
 axios.defaults.timeout = 10000
-axios.defaults.baseURL = baseURL // baseURL
+axios.defaults.baseURL = baseURL
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -29,11 +29,11 @@ function login (parmas) {
 }
 
 function register (parmas) {
-    return post('api/user/register', parmas)
+    return post('/api/user/register', parmas)
 }
 
 function logout () {
-    return post('api/user/logout')
+    return post('/api/user/logout')
 }
 
 function modifyPassword (parmas) {

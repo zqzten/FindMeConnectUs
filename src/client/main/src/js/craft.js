@@ -1,7 +1,6 @@
 import * as THREE from "three";
 
-
-export class Craft{
+export class Craft {
 	constructor(id,name,picture,model,pickable) {
 		this.id = id;
 		this.name = name;
@@ -16,10 +15,9 @@ export class Craft{
 		this.door = door;
 		this.pickable = false;
 	}
+
 	clone() {
 		let copy = new Craft(this.id,this.name,this.picture,this.model,this.pickable);
 		return copy;
 	}
-
-
 }

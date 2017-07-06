@@ -2,8 +2,8 @@
 This is the main part of the client part of FindMeConnectUs.
 
 ## Catalog
-* `assets` 静态资源目录
 * `src` 源代码目录
+* `static` 静态资源目录
 * `package.json` npm 配置文件
 * `webpack.config.js` webpack 配置文件
 

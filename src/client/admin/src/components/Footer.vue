@@ -5,6 +5,7 @@
                 class="icon-social-github"></i> View Github</a></span>
     </footer>
 </template>
+
 <script>
     export default {
         name: 'footer'

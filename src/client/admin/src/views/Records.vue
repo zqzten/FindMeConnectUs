@@ -8,6 +8,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import 'iview/dist/styles/iview.css'
     import api from '../api'

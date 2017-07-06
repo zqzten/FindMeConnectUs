@@ -1,17 +1,17 @@
 // import assets
 
-import skyTextureImage from "../../assets/ui/sky.jpg";
-import floorTextureImage from "../../assets/ui/wood.jpg";
-import wallTextureImage from "../../assets/ui/metal.jpg";
-import ui_hint_normal  from "../../assets/ui/hint-normal.png";
-import ui_hint_hover from "../../assets/ui/hint-hover.png";
-import ui_hint_paper from "../../assets/ui/hint-paper.png";
-import ui_voteInv from "../../assets/ui/voteInv.png";
-import doorTextureImage from "../../assets/ui/door.jpg";
-import music from "../../assets/music/ui_main.mp3";
-import ui_loading from "../../assets/ui/loading.jpg";
-import player1_tex from "../../assets/models/playermodel/Tex_0018_0.png";
-import player1_model from "../../assets/models/playermodel/subway.json";
+import skyTextureImage from "../../static/img/sky.jpg";
+import floorTextureImage from "../../static/img/wood.jpg";
+import wallTextureImage from "../../static/img/metal.jpg";
+import ui_hint_normal  from "../../static/img/hint-normal.png";
+import ui_hint_hover from "../../static/img/hint-hover.png";
+import ui_hint_paper from "../../static/img/hint-paper.png";
+import ui_voteInv from "../../static/img/voteInv.png";
+import doorTextureImage from "../../static/img/door.jpg";
+import music from "../../static/audio/ui_main.mp3";
+import ui_loading from "../../static/img/loading.jpg";
+import player1_tex from "../../static/models/playermodel/Tex_0018_0.png";
+import player1_model from "../../static/models/playermodel/subway.json";
 
 // import css
 import "../css/main.css";

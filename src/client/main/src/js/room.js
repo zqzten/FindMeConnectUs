@@ -10,26 +10,26 @@ export const WALL_THICKNESS = 0.5;
 
 let floorTextureImage = [];
 
-import floorTextureImage0 from "../../assets/models/floor/1.jpg";
-import floorTextureImage1 from "../../assets/models/floor/3.jpg";
-import floorTextureImage2 from "../../assets/models/floor/4.jpg";
-import floorTextureImage3 from "../../assets/models/floor/8.jpg";
+import floorTextureImage0 from "../../static/models/floor/1.jpg";
+import floorTextureImage1 from "../../static/models/floor/3.jpg";
+import floorTextureImage2 from "../../static/models/floor/4.jpg";
+import floorTextureImage3 from "../../static/models/floor/8.jpg";
 floorTextureImage = [floorTextureImage0,floorTextureImage1,floorTextureImage2,floorTextureImage3];
 
 let wallTextureImage = [];
 
-import wallTextureImage0 from "../../assets/models/wall/1.jpg";
-import wallTextureImage1 from "../../assets/models/wall/4.jpg";
-import wallTextureImage2 from "../../assets/models/wall/6.jpg";
-import wallTextureImage3 from "../../assets/models/wall/13.jpg";
+import wallTextureImage0 from "../../static/models/wall/1.jpg";
+import wallTextureImage1 from "../../static/models/wall/4.jpg";
+import wallTextureImage2 from "../../static/models/wall/6.jpg";
+import wallTextureImage3 from "../../static/models/wall/13.jpg";
 
 wallTextureImage = [wallTextureImage0,wallTextureImage1,wallTextureImage2,wallTextureImage3];
 
 let doorTextureImage = [];
-import doorTextureImage0 from "../../assets/models/door/7.jpg";
-import doorTextureImage1 from "../../assets/models/door/4.jpg";
-import doorTextureImage2 from "../../assets/models/door/5.jpg";
-import doorTextureImage3 from "../../assets/models/door/3.jpg";
+import doorTextureImage0 from "../../static/models/door/7.jpg";
+import doorTextureImage1 from "../../static/models/door/4.jpg";
+import doorTextureImage2 from "../../static/models/door/5.jpg";
+import doorTextureImage3 from "../../static/models/door/3.jpg";
  
 doorTextureImage = [doorTextureImage0,doorTextureImage1,doorTextureImage2,doorTextureImage3];
 
@@ -58,47 +58,47 @@ craftName[37] = "白沙发";hints[37] = "白色，休息";craftName[38] = "抽�
 craftName[39] = "三轮车";hints[39] = "三条腿，跑得快";craftName[40] = "茶壶";hints[40] = "泡茶工具";
 
 let craftAddr = [];
-import craftAddr0 from "../../assets/models/model/1/1.png";craftAddr.push(craftAddr0);
-import craftAddr1 from "../../assets/models/model/2/2.png";craftAddr.push(craftAddr1);
-import craftAddr2 from "../../assets/models/model/3/3.png";craftAddr.push(craftAddr2);
-import craftAddr3 from "../../assets/models/model/4/4.png";craftAddr.push(craftAddr3);
-import craftAddr4 from "../../assets/models/model/5/5.png";craftAddr.push(craftAddr4);
-import craftAddr5 from "../../assets/models/model/6/6.png";craftAddr.push(craftAddr5);
-import craftAddr6 from "../../assets/models/model/7/7.png";craftAddr.push(craftAddr6);
-import craftAddr7 from "../../assets/models/model/8/8.png";craftAddr.push(craftAddr7);
-import craftAddr8 from "../../assets/models/model/9/9.png";craftAddr.push(craftAddr8);
-import craftAddr9 from "../../assets/models/model/10/10.png";craftAddr.push(craftAddr9);
-import craftAddr10 from "../../assets/models/model/11/11.png";craftAddr.push(craftAddr10);
-import craftAddr11 from "../../assets/models/model/12/12.png";craftAddr.push(craftAddr11);
-import craftAddr12 from "../../assets/models/model/13/13.png";craftAddr.push(craftAddr12);
-import craftAddr13 from "../../assets/models/model/14/14.png";craftAddr.push(craftAddr13);
-import craftAddr14 from "../../assets/models/model/15/15.png";craftAddr.push(craftAddr14);
-import craftAddr15 from "../../assets/models/model/16/16.png";craftAddr.push(craftAddr15);
-import craftAddr16 from "../../assets/models/model/17/17.png";craftAddr.push(craftAddr16);
-import craftAddr17 from "../../assets/models/model/18/18.png";craftAddr.push(craftAddr17);
-import craftAddr18 from "../../assets/models/model/19/19.png";craftAddr.push(craftAddr18);
-import craftAddr19 from "../../assets/models/model/20/20.png";craftAddr.push(craftAddr19);
-import craftAddr20 from "../../assets/models/model/21/21.png";craftAddr.push(craftAddr20);
-import craftAddr21 from "../../assets/models/model/22/22.png";craftAddr.push(craftAddr21);
-import craftAddr22 from "../../assets/models/model/23/23.png";craftAddr.push(craftAddr22);
-import craftAddr23 from "../../assets/models/model/24/24.png";craftAddr.push(craftAddr23);
-import craftAddr24 from "../../assets/models/model/25/25.png";craftAddr.push(craftAddr24);
-import craftAddr25 from "../../assets/models/model/26/26.png";craftAddr.push(craftAddr25);
-import craftAddr26 from "../../assets/models/model/27/27.png";craftAddr.push(craftAddr26);
-import craftAddr27 from "../../assets/models/model/28/28.png";craftAddr.push(craftAddr27);
-import craftAddr28 from "../../assets/models/model/29/29.png";craftAddr.push(craftAddr28);
-import craftAddr29 from "../../assets/models/model/30/30.png";craftAddr.push(craftAddr29);
-import craftAddr30 from "../../assets/models/model/31/31.png";craftAddr.push(craftAddr30);
-import craftAddr31 from "../../assets/models/model/32/32.png";craftAddr.push(craftAddr31);
-import craftAddr32 from "../../assets/models/model/33/33.png";craftAddr.push(craftAddr32);
-import craftAddr33 from "../../assets/models/model/34/34.png";craftAddr.push(craftAddr33);
-import craftAddr34 from "../../assets/models/model/35/35.png";craftAddr.push(craftAddr34);
-import craftAddr35 from "../../assets/models/model/36/36.png";craftAddr.push(craftAddr35);
-import craftAddr36 from "../../assets/models/model/37/37.png";craftAddr.push(craftAddr36);
-import craftAddr37 from "../../assets/models/model/38/38.png";craftAddr.push(craftAddr37);
-import craftAddr38 from "../../assets/models/model/39/39.png";craftAddr.push(craftAddr38);
-import craftAddr39 from "../../assets/models/model/40/40.png";craftAddr.push(craftAddr39);
-import craftAddr40 from "../../assets/models/model/41/41.png";craftAddr.push(craftAddr40);
+import craftAddr0 from "../../static/models/model/1/1.png";craftAddr.push(craftAddr0);
+import craftAddr1 from "../../static/models/model/2/2.png";craftAddr.push(craftAddr1);
+import craftAddr2 from "../../static/models/model/3/3.png";craftAddr.push(craftAddr2);
+import craftAddr3 from "../../static/models/model/4/4.png";craftAddr.push(craftAddr3);
+import craftAddr4 from "../../static/models/model/5/5.png";craftAddr.push(craftAddr4);
+import craftAddr5 from "../../static/models/model/6/6.png";craftAddr.push(craftAddr5);
+import craftAddr6 from "../../static/models/model/7/7.png";craftAddr.push(craftAddr6);
+import craftAddr7 from "../../static/models/model/8/8.png";craftAddr.push(craftAddr7);
+import craftAddr8 from "../../static/models/model/9/9.png";craftAddr.push(craftAddr8);
+import craftAddr9 from "../../static/models/model/10/10.png";craftAddr.push(craftAddr9);
+import craftAddr10 from "../../static/models/model/11/11.png";craftAddr.push(craftAddr10);
+import craftAddr11 from "../../static/models/model/12/12.png";craftAddr.push(craftAddr11);
+import craftAddr12 from "../../static/models/model/13/13.png";craftAddr.push(craftAddr12);
+import craftAddr13 from "../../static/models/model/14/14.png";craftAddr.push(craftAddr13);
+import craftAddr14 from "../../static/models/model/15/15.png";craftAddr.push(craftAddr14);
+import craftAddr15 from "../../static/models/model/16/16.png";craftAddr.push(craftAddr15);
+import craftAddr16 from "../../static/models/model/17/17.png";craftAddr.push(craftAddr16);
+import craftAddr17 from "../../static/models/model/18/18.png";craftAddr.push(craftAddr17);
+import craftAddr18 from "../../static/models/model/19/19.png";craftAddr.push(craftAddr18);
+import craftAddr19 from "../../static/models/model/20/20.png";craftAddr.push(craftAddr19);
+import craftAddr20 from "../../static/models/model/21/21.png";craftAddr.push(craftAddr20);
+import craftAddr21 from "../../static/models/model/22/22.png";craftAddr.push(craftAddr21);
+import craftAddr22 from "../../static/models/model/23/23.png";craftAddr.push(craftAddr22);
+import craftAddr23 from "../../static/models/model/24/24.png";craftAddr.push(craftAddr23);
+import craftAddr24 from "../../static/models/model/25/25.png";craftAddr.push(craftAddr24);
+import craftAddr25 from "../../static/models/model/26/26.png";craftAddr.push(craftAddr25);
+import craftAddr26 from "../../static/models/model/27/27.png";craftAddr.push(craftAddr26);
+import craftAddr27 from "../../static/models/model/28/28.png";craftAddr.push(craftAddr27);
+import craftAddr28 from "../../static/models/model/29/29.png";craftAddr.push(craftAddr28);
+import craftAddr29 from "../../static/models/model/30/30.png";craftAddr.push(craftAddr29);
+import craftAddr30 from "../../static/models/model/31/31.png";craftAddr.push(craftAddr30);
+import craftAddr31 from "../../static/models/model/32/32.png";craftAddr.push(craftAddr31);
+import craftAddr32 from "../../static/models/model/33/33.png";craftAddr.push(craftAddr32);
+import craftAddr33 from "../../static/models/model/34/34.png";craftAddr.push(craftAddr33);
+import craftAddr34 from "../../static/models/model/35/35.png";craftAddr.push(craftAddr34);
+import craftAddr35 from "../../static/models/model/36/36.png";craftAddr.push(craftAddr35);
+import craftAddr36 from "../../static/models/model/37/37.png";craftAddr.push(craftAddr36);
+import craftAddr37 from "../../static/models/model/38/38.png";craftAddr.push(craftAddr37);
+import craftAddr38 from "../../static/models/model/39/39.png";craftAddr.push(craftAddr38);
+import craftAddr39 from "../../static/models/model/40/40.png";craftAddr.push(craftAddr39);
+import craftAddr40 from "../../static/models/model/41/41.png";craftAddr.push(craftAddr40);
 
 
 let roomModelNum = [];
@@ -155,7 +155,7 @@ roomModelX[3].push(12);roomModelY[3].push(1);roomModelZ[3].push(5);roomModelType
 
 
 let craftPic = [];
-import craftPic6 from "../../assets/models/model/7/7.png";craftPic[6] = craftPic6;
+import craftPic6 from "../../static/models/model/7/7.png";craftPic[6] = craftPic6;
 
 let textureLoader = new THREE.TextureLoader();
 let jsloader = new THREE.ObjectLoader();

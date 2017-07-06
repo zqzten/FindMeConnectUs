@@ -152,20 +152,6 @@
     </div>
 </template>
 
-<style>
-    .pagination {
-        margin-bottom: 0
-    }
-
-    .card-block-no-padding {
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-</style>
-
 <script>
     import Navbar from '../components/Navbar'
     import router from '../router'
@@ -181,3 +167,17 @@
         }
     }
 </script>
+
+<style scoped>
+    .pagination {
+        margin-bottom: 0
+    }
+
+    .card-block-no-padding {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+</style>

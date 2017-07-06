@@ -2,15 +2,20 @@
   "name": "find-me-connect-us-client-main",
   "version": "1.0.0",
   "description": "The main part of the client part of FindMeConnectUs.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AkikoZ/FindMeConnectUs.git"
+  },
   "scripts": {
     "clean": "rm -rf dist/*",
     "build": "webpack",
     "start": "webpack-dev-server"
   },
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AkikoZ/FindMeConnectUs.git"
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "socket.io": "^2.0.3",
+    "three": "^0.85.2"
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
@@ -19,10 +24,5 @@
     "style-loader": "^0.17.0",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.5"
-  },
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "socket.io": "^2.0.3",
-    "three": "^0.85.2"
   }
 }

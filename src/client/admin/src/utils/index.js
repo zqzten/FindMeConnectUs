@@ -1,16 +1,15 @@
 /**
  * Created by jiachenpan on 16/11/18.
  */
-/* eslint-disable */
 export function formatDate (time) {
     let date = new Date(time)
     let Y, M, D, h, m, s
-    Y = date.getFullYear() + '-';
+    Y = date.getFullYear() + '-'
     M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-'
     D = (date.getDate() < 10 ? '0'+(date.getDate()) : date.getDate()) + ' '
-    h = (date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours()) + ':';
-    m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':';
-    s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+    h = (date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours()) + ':'
+    m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':'
+    s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds())
     return Y+M+D+h+m+s
 }
 
@@ -18,8 +17,7 @@ export function param (json) {
     if (!json) return ''
     return cleanArray(Object.keys(json).map(key => {
         if (json[key] === undefined) return ''
-        return encodeURIComponent(key) + '=' +
-            encodeURIComponent(json[key])
+        return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     })).join('&')
 }
 
