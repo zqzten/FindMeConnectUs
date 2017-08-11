@@ -1,7 +1,9 @@
 # FMCUClient - Main
+
 This is the main part of the client part of FindMeConnectUs.
 
 ## Catalog
+
 * `src` 源代码目录
 * `static` 静态资源目录
 * `package.json` npm 配置文件
@@ -10,9 +12,11 @@ This is the main part of the client part of FindMeConnectUs.
 ### Setup
 
 ### Prerequisites
+
 * Node.js v8.0.0 with npm v5.0.0
 
 ### Commands
+
 ```shell
 # install dependencies
 npm install
