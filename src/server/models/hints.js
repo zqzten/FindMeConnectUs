@@ -1,6 +1,6 @@
-const db = require("../db");
+const db = require('../db');
 
-module.exports = db.defineModel("hints", {
+module.exports = db.defineModel('hints', {
     modelName: db.STRING,
     content: db.STRING
 });

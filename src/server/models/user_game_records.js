@@ -1,6 +1,6 @@
-const db = require("../db");
+const db = require('../db');
 
-module.exports = db.defineModel("user_game_records", {
+module.exports = db.defineModel('user_game_records', {
     userID: db.ID,
     gameID: db.ID,
     state: {

@@ -1,6 +1,6 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
-const config = require("./config");
+const config = require('./config');
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
@@ -10,13 +10,13 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 });
 
 const ID_TYPE = Sequelize.INTEGER;
-const TYPES = ["STRING", "TEXT", "INTEGER", "BIGINT", "DOUBLE", "DATE", "BOOLEAN"];
+const TYPES = ['STRING', 'TEXT', 'INTEGER', 'BIGINT', 'DOUBLE', 'DATE', 'BOOLEAN'];
 
 function defineModel(name, attributes) {
     let attrs = {};
     for (const key in attributes) {
         let value = attributes[key];
-        if (typeof value === "object" && value["type"]) {
+        if (typeof value === 'object' && value['type']) {
             value.allowNull = value.allowNull || false;
             attrs[key] = value;
         } else {

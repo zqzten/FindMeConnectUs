@@ -1,4 +1,4 @@
-const model = require("./model");
+const model = require('./model');
 const User = model.users;
 const Game = model.games;
 const UserGameRecord = model.user_game_records;

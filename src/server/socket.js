@@ -1,4 +1,4 @@
-const util = require("./util");
+const util = require('./util');
 
 let chatSockets = new Map();
 
@@ -12,39 +12,39 @@ let games = new Map();
 
 module.exports = io => {
     /* chat socket */
-    let chatIO = io.of("/chat");
-    chatIO.on("connection", socket => {
+    let chatIO = io.of('/chat');
+    chatIO.on('connection', socket => {
         /* user join chat */
-        socket.on("join", userID => {
+        socket.on('join', userID => {
             chatSockets.set(socket.id, userID);
-            chatIO.emit("joined", userID);
+            chatIO.emit('joined', userID);
         });
 
         /* user send msg */
-        socket.on("msg", msg => {
+        socket.on('msg', msg => {
             const userID = chatSockets.get(socket.id);
-            chatIO.emit("msg received", { userID: userID, msg: msg });
+            chatIO.emit('msg received', { userID: userID, msg: msg });
         });
 
         /* user offline */
-        socket.on("disconnect", () => {
+        socket.on('disconnect', () => {
             const userID = chatSockets.get(socket.id);
             chatSockets.delete(socket.id);
-            chatIO.emit("left", userID);
+            chatIO.emit('left', userID);
         });
     });
 
     /* room socket */
-    let roomIO = io.of("/room");
-    roomIO.on("connection", socket => {
+    let roomIO = io.of('/room');
+    roomIO.on('connection', socket => {
         /* user online */
-        socket.on("online", userID => {
+        socket.on('online', userID => {
             // map socket to user
             roomSockets.set(socket.id, userID);
         });
 
         /* user create room */
-        socket.on("create", (roomName, mapLength, mapWidth, ack) => {
+        socket.on('create', (roomName, mapLength, mapWidth, ack) => {
             const userID = roomSockets.get(socket.id);
             if (rooms.has(roomName)) {
                 ack(false);
@@ -59,20 +59,20 @@ module.exports = io => {
         });
 
         /* user join room */
-        socket.on("join", (roomName, ack) => {
+        socket.on('join', (roomName, ack) => {
             const userID = roomSockets.get(socket.id);
             if (!rooms.has(roomName)) {
-                ack(false, "room_not_exist");
+                ack(false, 'room_not_exist');
             } else {
                 let room = rooms.get(roomName);
                 let users = room.users;
                 // check if reach max limit
                 if (users.size === 8) {
-                    ack(false, "room_full");
+                    ack(false, 'room_full');
                     return;
                 }
                 // notify others in room
-                roomIO.to(roomName).emit("joined", userID);
+                roomIO.to(roomName).emit('joined', userID);
                 // notify self
                 ack(true, [...users.entries()], room.size);
                 // join room
@@ -83,7 +83,7 @@ module.exports = io => {
         });
 
         /* user leave room */
-        socket.on("leave", () => {
+        socket.on('leave', () => {
             const userID = roomSockets.get(socket.id);
             const roomName = roomUsers.get(userID);
             // leave room if there's one
@@ -93,14 +93,14 @@ module.exports = io => {
                 users.delete(userID);
                 socket.leave(roomName);
                 // notify others in room
-                roomIO.to(roomName).emit("left", userID);
+                roomIO.to(roomName).emit('left', userID);
                 // delete room if empty
                 if (users.size === 0) rooms.delete(roomName);
             }
         });
 
         /* user is ready */
-        socket.on("ready", async () => {
+        socket.on('ready', async () => {
             const userID = roomSockets.get(socket.id);
             const roomName = roomUsers.get(userID);
             // is ready
@@ -108,7 +108,7 @@ module.exports = io => {
             let users = room.users;
             users.set(userID, true);
             // notify others in room
-            roomIO.to(roomName).emit("is ready", userID);
+            roomIO.to(roomName).emit('is ready', userID);
             // start game if reach min limit and all are ready
             if (users.size >= 3) {
                 let allReady = true;
@@ -132,24 +132,24 @@ module.exports = io => {
                         await util.createUserGameRecord(record);
                     }
                     // notify users in room
-                    roomIO.to(roomName).emit("game start", game.id);
+                    roomIO.to(roomName).emit('game start', game.id);
                 }
             }
         });
 
         /* user is not ready */
-        socket.on("not ready", () => {
+        socket.on('not ready', () => {
             const userID = roomSockets.get(socket.id);
             const roomName = roomUsers.get(userID);
             // not ready
             let users = rooms.get(roomName).users;
             users.set(userID, false);
             // notify others in room
-            roomIO.to(roomName).emit("is not ready", userID);
+            roomIO.to(roomName).emit('is not ready', userID);
         });
 
         /* user offline */
-        socket.on("disconnect", () => {
+        socket.on('disconnect', () => {
             const userID = roomSockets.get(socket.id);
             roomSockets.delete(socket.id);
             // leave room if was in an exist one
@@ -161,7 +161,7 @@ module.exports = io => {
                     users.delete(userID);
                     socket.leave(roomName);
                     // notify others in room
-                    roomIO.to(roomName).emit("left", userID);
+                    roomIO.to(roomName).emit('left', userID);
                     // delete room if empty
                     if (users.size === 0) rooms.delete(roomName);
                 }
@@ -170,10 +170,10 @@ module.exports = io => {
     });
 
     /* game socket */
-    let gameIO = io.of("/game");
-    gameIO.on("connection", socket => {
+    let gameIO = io.of('/game');
+    gameIO.on('connection', socket => {
         /* user join game */
-        socket.on("join", async (userID, gameID) => {
+        socket.on('join', async (userID, gameID) => {
             // map socket to user
             gameSockets.set(socket.id, userID);
             // join game
@@ -212,7 +212,7 @@ module.exports = io => {
                             }
                         }
                     }
-                    gameIO.to(gameID).emit("game info", [...initialRomes.entries()], mapLength, mapWidth, matrix);
+                    gameIO.to(gameID).emit('game info', [...initialRomes.entries()], mapLength, mapWidth, matrix);
                 }
             } else {
                 const userCount = await util.getGameUserCount(gameID);
@@ -221,7 +221,7 @@ module.exports = io => {
         });
 
         /* user ready */
-        socket.on("ready", async models => {
+        socket.on('ready', async models => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // is ready
@@ -240,29 +240,29 @@ module.exports = io => {
                 // reset status
                 for (let roundEnd of users.values()) roundEnd = false;
                 // notify all
-                gameIO.to(gameID).emit("all are ready", game.currentHint.content);
+                gameIO.to(gameID).emit('all are ready', game.currentHint.content);
             }
         });
 
         /* user move */
-        socket.on("move", position => {
+        socket.on('move', position => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // notify others in game
-            gameIO.to(gameID).emit("moved", userID, position);
+            gameIO.to(gameID).emit('moved', userID, position);
         });
 
         /* user play sound */
-        socket.on("play sound", async () => {
+        socket.on('play sound', async () => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             const user = await util.getUserByID(userID);
             // notify others in game
-            gameIO.to(gameID).emit("sound played", userID, user.avatarID);
+            gameIO.to(gameID).emit('sound played', userID, user.avatarID);
         });
 
         /* user change vote model */
-        socket.on("change vote model", (newModelName, oldModelName) => {
+        socket.on('change vote model', (newModelName, oldModelName) => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // change model if needed
@@ -271,12 +271,12 @@ module.exports = io => {
                 if (oldModelName) votes.delete(oldModelName);
                 votes.set(newModelName, 1);
                 // notify others in game
-                gameIO.to(gameID).emit("vote model changed", userID, newModelName, oldModelName);
+                gameIO.to(gameID).emit('vote model changed', userID, newModelName, oldModelName);
             }
         });
 
         /* user vote */
-        socket.on("vote", modelName => {
+        socket.on('vote', modelName => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // vote if game exists
@@ -291,7 +291,7 @@ module.exports = io => {
         });
 
         /* user unvote */
-        socket.on("unvote", modelName => {
+        socket.on('unvote', modelName => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // unvote if game exists
@@ -302,15 +302,15 @@ module.exports = io => {
         });
 
         /* user unlock door */
-        socket.on("unlock", door => {
+        socket.on('unlock', door => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // notify others in game
-            gameIO.to(gameID).emit("unlocked", door);
+            gameIO.to(gameID).emit('unlocked', door);
         });
 
         /* user round end */
-        socket.on("round end", async (models, doors) => {
+        socket.on('round end', async (models, doors) => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // end round
@@ -354,7 +354,7 @@ module.exports = io => {
                     }
                 }
                 // notify all
-                gameIO.to(gameID).emit("next round", [...game.votes.entries()], game.nextHint.content, success, lockedDoor, outUser);
+                gameIO.to(gameID).emit('next round', [...game.votes.entries()], game.nextHint.content, success, lockedDoor, outUser);
                 // reset status
                 for (const user of users.keys()) users.set(user, false);
                 game.currentHint = game.nextHint;
@@ -364,7 +364,7 @@ module.exports = io => {
         });
 
         /* game over */
-        socket.on("game over", async (success, score) => {
+        socket.on('game over', async (success, score) => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             // end game
@@ -383,12 +383,12 @@ module.exports = io => {
             for (const roundEnd of users.values())
                 if (!roundEnd) allEnd = false;
             if (allEnd) {
-                gameIO.to(gameID).emit("game is over", [...game.scores.entries()]);
+                gameIO.to(gameID).emit('game is over', [...game.scores.entries()]);
             }
         });
 
         /* user offline */
-        socket.on("disconnect", () => {
+        socket.on('disconnect', () => {
             const userID = gameSockets.get(socket.id);
             const gameID = gameUsers.get(userID);
             gameSockets.delete(socket.id);
@@ -401,7 +401,7 @@ module.exports = io => {
                     users.delete(userID);
                     socket.leave(gameID);
                     // notify others in game
-                    gameIO.to(gameID).emit("left", userID);
+                    gameIO.to(gameID).emit('left', userID);
                     // delete game if empty
                     if (users.size === 0) games.delete(gameID);
                 }
