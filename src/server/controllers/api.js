@@ -21,7 +21,7 @@ module.exports = {
         // create user
         const user = {
             username: username,
-            password: bcrypt.hashSync(password),
+            password: await bcrypt.hash(password, await bcrypt.genSalt()),
             avatarID: avatarID,
             modelID: modelID,
             signature: signature,
@@ -45,7 +45,7 @@ module.exports = {
         if (!user) throw new APIError('user_not_exist');
 
         // validate password
-        if (!bcrypt.compareSync(password, user.password)) throw new APIError('password_mismatch');
+        if (!await bcrypt.compare(password, user.password)) throw new APIError('password_mismatch');
 
         // set session
         ctx.session.user = user.id;
@@ -76,10 +76,11 @@ module.exports = {
 
         // validate password
         let user = await util.getUserByID(userID);
-        if (!bcrypt.compareSync(oldPassword, user.password)) throw new APIError('password_mismatch');
+        if (!await bcrypt.compare(oldPassword, user.password)) throw new APIError('password_mismatch');
 
         // modify password
-        user.password = bcrypt.hashSync(newPassword);
+        user.password = await bcrypt.hash(newPassword, await bcrypt.genSalt());
+        await user.save();
 
         ctx.rest({});
 
